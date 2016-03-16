@@ -18,6 +18,7 @@ class MY_Controller extends CI_Controller
 {
 
     public $_partials;
+    public $category = null;
 
     /**
      * constructor
@@ -44,7 +45,7 @@ class MY_Controller extends CI_Controller
         $info = json_decode($this->session->flashdata('returnMessage'));
         if (!isset($this->_template_data_array['returnMessage']) && count($info) !== 0 && isset($info->message)) {
             $this->smarty->assign('returnMessage', $info->message);
-            $this->smarty->assign('returnMessage_class', ((isset($info->class) ? $info->class : 'warning')));
+            $this->smarty->assign('returnMessage_class', (isset($info->class) ? $info->class : 'warning'));
         } else {
             $this->smarty->assign('returnMessage', '');
             $this->smarty->assign('returnMessage_class', '');
@@ -108,6 +109,7 @@ class MY_Controller extends CI_Controller
                         ? $this->_prepare_menu($categories, 0, $this->_template_data_array['currentCat'])
                         : 'No Categories'),
                 'block' => FALSE,
+                'js' => $this->_prepare_js_menu($this->bw_config->categories, $this->_template_data_array['currentCat']),
                 'locations_select' => $this->location_model->generate_select_list($this->bw_config->location_list_source, 'location', 'span12'),
                 'locations_w_select' => $this->location_model->generate_select_list($this->bw_config->location_list_source, 'location', 'span12', FALSE, array('worldwide' => TRUE))
             ];
@@ -122,13 +124,16 @@ class MY_Controller extends CI_Controller
                 unset($this->_template_data_array['ship_to_error']);
             }
         } else {
-            $bar = [];
+
+            $js_menu = $this->_prepare_js_menu($this->bw_config->categories, $this->_template_data_array['currentCat']);
+
             if ($this->bw_config->allow_guests == TRUE) {
                 $categories = $this->categories_model->menu();
                 $category_data = [
                     'cats' => ((count($categories) > 0)
                             ? $this->_prepare_menu($categories, 0, $this->_template_data_array['currentCat'])
                             : 'No Categories'),
+                    'js' => $js_menu,
                     'block' => FALSE
                 ];
             } else {
@@ -136,6 +141,51 @@ class MY_Controller extends CI_Controller
             }
         }
         $this->smarty->assign('category_data', $category_data);
+    }
+
+    public function _prepare_js_menu($categories)
+    {
+        $content = array();
+        foreach ($categories as $category) {
+
+            if (isset($categories[$category['parent_id']]))
+            {
+                $parent = & $categories[$category['parent_id']];
+                $parent['count_child_items'] += $category['count_child_items'];
+            }
+        }
+
+        foreach ($categories as $category) {
+            $extra = array();
+            if ($category['id'] == $this->category)
+                $extra['selected'] = true;
+
+            $content[$category['id']] = (object)array(
+                'id' => $category['id'],
+                'text' => $category['name'],
+                'hash' => $category['hash'],
+                'href' => base_url('category/'.$category['hash']),
+                'tags' => "".$category['count_child_items']."",
+                'parent_id' => $category['parent_id']
+            );
+
+
+        }
+
+        // Store all child categories as an array $menu[parentID]['children']
+        foreach ($content as &$menuItem) {
+            if ($menuItem->parent_id !== '0')
+                $content[$menuItem->parent_id]->nodes[] = & $menuItem;
+        }
+
+        // Remove child categories from the first level of the $menu[] array.
+        foreach ($content as $c) {
+            if ($c->parent_id != "0" OR $c->tags == 0)
+                unset($content[$c->id]);
+        }
+        //$content = $this->_prepare_menu2($content, 0, array());
+        return json_encode(json_decode(json_encode(array_values($content))));
+
     }
 
     /**
@@ -170,7 +220,8 @@ class MY_Controller extends CI_Controller
             $content .= "'>";
 
             // Display link if category contains items.
-            $content .= ($category['count'] == 0) ? "<a href='#'>{$category['name']}   </a>" : anchor('category/' . $category['hash'], $category['name'] . ' (' . $category['count'] . ")");
+            $name_str = $category['name'] . (($category['count_child_items'] > 0) ? " (" . $category['count_child_items'] . ")" : '');
+            $content .= anchor('category/' . $category['hash'], $name_str);
 
             // Check if we need to recurse into children.
             if (isset($category['children']))
