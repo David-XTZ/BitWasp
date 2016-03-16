@@ -112,6 +112,7 @@ class Core {
 		$new  = str_replace("%BTC_USERNAME%",$data['btc_username'],$new);
 		$new  = str_replace("%BTC_PASSWORD%",$data['btc_password'],$new);
 		$new  = str_replace("%BTC_SSL%",((isset($data['btc_ssl']) && $data['btc_ssl'] == '1') ? 'TRUE' : 'FALSE'),$new);
+		$new  = str_replace("%BTC_TESTNET%",((isset($data['btc_testnet']) && $data['btc_testnet'] == '1') ? 'TRUE' : 'FALSE'),$new);
 
 		// Write the new database.php file
 		$handle = fopen($output_path,'w+');

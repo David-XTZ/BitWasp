@@ -119,7 +119,16 @@ class MY_Form_validation extends CI_Form_validation
 
     public function check_bitcoin_address($str)
     {
-        return \BitWasp\BitcoinLib\BitcoinLib::validate_address($str, '05');
+        $this->config->load('bitcoin');
+        if($this->config->item('testnet')){
+            $magic_byte = '6f';
+            $magic_p2sh_byte = 'c4';
+        }else{
+            $magic_byte = '00';
+            $magic_p2sh_byte = '05';
+        }
+
+        return \BitWasp\BitcoinLib\BitcoinLib::validate_address($str, $magic_byte, $magic_p2sh_byte);
     }
 
     /**

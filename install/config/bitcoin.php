@@ -18,6 +18,7 @@
 */
 
 $config['ssl']		= %BTC_SSL%;
+$config['testnet']		= %BTC_TESTNET%;
 $config['user']		= "%BTC_USERNAME%";
 $config['password'] = "%BTC_PASSWORD%";
 $config['host']		= '%BTC_IP%';

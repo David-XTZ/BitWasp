@@ -283,6 +283,11 @@ rpcconnect=127.0.0.1</pre><br />
           <input type="text" id="username" class="input_text" name="btc_username"   /><br /><br />
           <label for="password">Password</label><br />
           <input type="password" id="password" class="input_text" name="btc_password"  /><br />
+
+          <input type="checkbox" id="testnet" class="input_checkbox" name="btc_testnet" value="1" />
+          Select if bitcoind is using testnet
+          <br />
+
           <input type='checkbox' id='hostname' value='1' />Select if bitcoind is using SSL<br />
           
         </fieldset>
