@@ -124,6 +124,7 @@ foreach($check as $key => $outcome) {
 						$commands[] = $cmd;
 					}
 				} 
+				var_dump($key);
 			}	
 		} ?><br /><br />
 		
