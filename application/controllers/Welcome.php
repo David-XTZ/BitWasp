@@ -54,6 +54,7 @@ class Welcome extends MY_Controller
      */
     public function index()
     {
+        $this->lang->load('welcome');
         $data['title'] = 'Welcome';
         $this->_render('welcome_message', $data);
     }

@@ -3,7 +3,7 @@
                 {assign var="defaultMessage" value=""}
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
 
-                <div class='alert alert-danger'>So long as this message remains in the code, the project is NOT production ready, and should only be used with the Bitcoin Testnet. Let ye be warned.</div>
+                <div class='alert alert-danger'>{lang('warning_message')}</div>
 
                 <p>Set up your own Bitcoin marketplace, independent of other payment processing services.</p>
                 <p>Completely avoid the barrier of entry to the Bitcoin Market, and take part in the Bitcoin revolution!</p>

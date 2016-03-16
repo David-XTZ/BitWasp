@@ -95,7 +95,33 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+if(isset($_REQUEST['lang'])){
+    $lang = $_REQUEST['lang'];
+}else if(isset($_SESSION['lang'])){
+    $lang = $_SESSION['lang'];
+}else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])){
+    $tmp = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+    $lang = $tmp[0];
+}else{
+    $lang = 'english';
+}
+switch(strtolower($lang)){
+case 'english':
+case 'en':
+    $config['language']	= 'english';
+    break;
+case 'japanese':
+case 'ja':
+case 'jp':
+    $config['language']	= 'japanese';
+    break;
+default:
+    $config['language']	= 'english';
+    break;
+}
+
+$_SESSION['lang'] = $config['language'];
+
 
 /*
 |--------------------------------------------------------------------------

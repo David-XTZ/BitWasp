@@ -113,7 +113,7 @@ $autoload['drivers'] = array('session');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url', 'bitwasp');
+$autoload['helper'] = array('url', 'bitwasp', 'language');
 
 
 /*
