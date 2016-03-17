@@ -1,49 +1,30 @@
 <?php
 /**
- * CodeIgniter
+ * System messages translation for CodeIgniter(tm)
  *
- * An open source application development framework for PHP 5.2.4 or newer
- *
- * NOTICE OF LICENSE
- *
- * Licensed under the Open Software License version 3.0
- *
- * This source file is subject to the Open Software License (OSL 3.0) that is
- * bundled with this package in the files license.txt / license.rst.  It is
- * also available through the world wide web at this URL:
- * http://opensource.org/licenses/OSL-3.0
- * If you did not receive a copy of the license and are unable to obtain it
- * through the world wide web, please send an email to
- * licensing@ellislab.com so we can send you a copy immediately.
- *
- * @package		CodeIgniter
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
- * @license		http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
- * @link		http://codeigniter.com
- * @since		Version 1.0
- * @filesource
+ * @author	CodeIgniter community
+ * @copyright	Copyright (c) 2014 - 2016, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['email_must_be_array'] = 'The email validation method must be passed an array.';
-$lang['email_invalid_address'] = 'Invalid email address: %s';
-$lang['email_attachment_missing'] = 'Unable to locate the following email attachment: %s';
-$lang['email_attachment_unreadable'] = 'Unable to open this attachment: %s';
-$lang['email_no_recipients'] = 'You must include recipients: To, Cc, or Bcc';
-$lang['email_send_failure_phpmail'] = 'Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.';
-$lang['email_send_failure_sendmail'] = 'Unable to send email using PHP Sendmail. Your server might not be configured to send mail using this method.';
-$lang['email_send_failure_smtp'] = 'Unable to send email using PHP SMTP. Your server might not be configured to send mail using this method.';
-$lang['email_sent'] = 'Your message has been successfully sent using the following protocol: %s';
-$lang['email_no_socket'] = 'Unable to open a socket to Sendmail. Please check settings.';
-$lang['email_no_hostname'] = 'You did not specify a SMTP hostname.';
-$lang['email_smtp_error'] = 'The following SMTP error was encountered: %s';
-$lang['email_no_smtp_unpw'] = 'Error: You must assign a SMTP username and password.';
-$lang['email_failed_smtp_login'] = 'Failed to send AUTH LOGIN command. Error: %s';
-$lang['email_smtp_auth_un'] = 'Failed to authenticate username. Error: %s';
-$lang['email_smtp_auth_pw'] = 'Failed to authenticate password. Error: %s';
-$lang['email_smtp_data_failure'] = 'Unable to send data: %s';
-$lang['email_exit_status'] = 'Exit status code: %s';
-
-/* End of file email_lang.php */
-/* Location: ./system/language/english/email_lang.php */
+$lang['email_must_be_array'] = "メールアドレスのバリデーションは、配列でデータを渡す必要があります。";
+$lang['email_invalid_address'] = 'メールアドレスの形式が違います: %s';
+$lang['email_attachment_missing'] = '次のメールの添付が見つかりません: %s';
+$lang['email_attachment_unreadable'] = '次の添付ファイルが開けません: %s';
+$lang['email_no_from'] = ' "From"ヘッダーがないためメールを送信できません';
+$lang['email_no_recipients'] = '宛先 (To,Cc,Bcc) が指定されていません';
+$lang['email_send_failure_phpmail'] = 'PHP mail() を使ってメールを送信できません。お使いのサーバでは、PHP mail() でメールを送信できるよう設定されていない可能性があります。';
+$lang['email_send_failure_sendmail'] = 'PHP Sendmail を使ってメールを送信できません。お使いのサーバでは、PHP Sendmail でメールを送信できるよう設定されていない可能性があります。';
+$lang['email_send_failure_smtp'] = 'PHP SMTP を使ってメールを送信できません。お使いのサーバでは、PHP SMTP でメールを送信できるよう設定されていない可能性があります';
+$lang['email_sent'] = 'メッセージは次のプロトコルを使って正常に送信されました: %s';
+$lang['email_no_socket'] = 'Sendmail に対しソケットを開くことができません。設定を見直してください。';
+$lang['email_no_hostname'] = 'SMTP ホスト名が指定されていません';
+$lang['email_smtp_error'] = '次の SMTP エラーが発生しました: %s';
+$lang['email_no_smtp_unpw'] = 'エラー: SMTP のユーザ名とパスワードを指定する必要があります';
+$lang['email_failed_smtp_login'] = 'AUTH LOGIN コマンドの送信に失敗しました。エラー: %s';
+$lang['email_smtp_auth_un'] = 'ユーザ名の認証に失敗しました。エラー: %s';
+$lang['email_smtp_auth_pw'] = 'パスワードの認証に失敗しました。エラー: %s';
+$lang['email_smtp_data_failure'] = 'データを送信できません: %s';
+$lang['email_exit_status'] = '終了ステータスコード: %s';
