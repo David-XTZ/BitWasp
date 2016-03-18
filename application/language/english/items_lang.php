@@ -1,2 +1,15 @@
 <?php
-$lang['there_are_no_items'] = 'There are no items at present, please try again later!';
+$lang['by'] = 'By';
+$lang['added'] = 'Added';
+$lang['updated'] = 'Updated';
+$lang['available_locations'] = 'Available Locations';
+$lang['cost'] = 'Cost';
+$lang['recent_reviews'] = 'Recent Reviews';
+$lang['all_reviews'] = '[All Reviews';
+$lang['positive'] = '[Positive';
+$lang['disputed'] = '[Disputed';
+$lang['average'] = 'Average';
+$lang['403_forbidden'] = '403 Forbidden';
+$lang['directory_access_is_forbidden'] = 'Directory access is forbidden.';
+$lang['items'] = 'Items';
+$lang['reviews'] = 'reviews';
