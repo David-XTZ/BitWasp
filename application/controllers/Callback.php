@@ -24,6 +24,7 @@ class Callback extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->lang->load("callback");
 
         // Prevent access via web. Uncomment when enough people have changed.
         if (!is_cli())

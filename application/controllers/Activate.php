@@ -23,6 +23,7 @@ class Activate extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->lang->load("activate");
         $this->load->library('form_validation');
     }
 

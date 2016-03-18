@@ -21,6 +21,7 @@ class Listings extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->lang->load("listings");
 
         $this->current_user->setup_vendor_bitcoin();
 

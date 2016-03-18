@@ -28,6 +28,7 @@ class Admin extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->lang->load("admin");
         $this->load->library('form_validation');
         $this->load->model('admin_model');
 

@@ -14,6 +14,7 @@ class Bitcoin_Test extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->lang->load("bitcoin_test");
         $this->load->library('bw_bitcoin');
 
     }

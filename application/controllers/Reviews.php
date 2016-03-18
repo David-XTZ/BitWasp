@@ -24,6 +24,7 @@ class Reviews extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->lang->load("reviews");
         $this->load->model('review_auth_model');
         $this->load->model('review_model');
         $this->load->library('form_validation');

@@ -27,6 +27,7 @@ class Messages extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->lang->load("messages");
         $this->load->model('messages_model');
         $this->load->library('bw_messages');
         $this->load->library('openssl');

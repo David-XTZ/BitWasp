@@ -24,6 +24,7 @@ class Onchain extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->lang->load("onchain");
         $this->load->model('onchain_model');
         $this->load->library('onchainlib');
         $this->load->helper('url');

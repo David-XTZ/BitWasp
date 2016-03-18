@@ -6,6 +6,7 @@ class Db extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->lang->load("db");
         if (!$this->input->is_cli_request())
             die('Not Authorized');
 

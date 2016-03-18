@@ -5,6 +5,7 @@ class Bip32 extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->lang->load("bip32");
 
         $this->load->library('form_validation');
         $this->load->model('bip32_model');

@@ -34,11 +34,11 @@ class Accounts extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->lang->load("accounts");
         $this->load->library('form_validation');
         $this->load->library('gpg');
         $this->load->model('accounts_model');
         $this->load->model('location_model');
-        $this->lang->load('account');
     }
 
     /**

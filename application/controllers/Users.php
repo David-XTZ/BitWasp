@@ -26,6 +26,7 @@ class Users extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->lang->load("users");
         $this->load->library('form_validation');
         $this->load->library('bw_captcha');
         $this->load->model('users_model');
