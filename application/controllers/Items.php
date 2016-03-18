@@ -25,6 +25,7 @@ class Items extends MY_Controller
         parent::__construct();
         $this->load->model('items_model');
         $this->items_per_page = 6;
+        $this->lang->load('item');
     }
 
     /**

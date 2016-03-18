@@ -22,43 +22,43 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3"><strong>Location</strong></div>
+                        <div class="col-md-3"><strong>{lang('location')}</strong></div>
                         <div class="col-md-7">{$user.location_f}</div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3"><strong>Registered</strong></div>
+                        <div class="col-md-3"><strong>{lang('registered')}</strong></div>
                         <div class="col-md-7">{$user.register_time_f}</div>
                     </div>
 
                     {if $user.display_login_time == '1'}
                     <div class="row">
-                        <div class="col-md-3"><strong>Last Activity</strong></div>
+                        <div class="col-md-3"><strong>{lang('last_activity')}</strong></div>
                         <div class="col-md-7">{$user.login_time_f}</div>
                     </div>
                     {/if}
 
                     <div class="row">
-                        <div class="col-md-3"><strong>Average Rating</strong></div>
+                        <div class="col-md-3"><strong>{lang('average_rating')}</strong></div>
                         <div class="col-md-7">{$average_rating}</div>
                     </div>
 
                     <div class="row">
-                        <div class='col-md-3'><strong>Completed Orders</strong></div>
+                        <div class='col-md-3'><strong>{lang('completed_orders')}</strong></div>
                         <div class='col-md-7'>{$user.completed_order_count}</div>
                     </div>
 
                     {if $reviews == TRUE}
                         <div class="well" style="background:white;">
-                            <legend>Recent Reviews</legend>
+                            <legend>{lang('recent_reviews')}</legend>
                             {capture name='t_user_all_reviews_url'}reviews/view/user/{$user.user_hash}{/capture}
-                            {capture name='t_all_reviews_str'}[All Reviews: {$review_count.all}]{/capture}
+                            {capture name='t_all_reviews_str'}[{lang('all_reviews')}: {$review_count.all}]{/capture}
 
                             {capture name='t_user_p_reviews_url'}reviews/view/user/{$user.user_hash}/0{/capture}
-                            {capture name='t_p_reviews_str'}[Positive: {$review_count.positive}]{/capture}
+                            {capture name='t_p_reviews_str'}[{lang('positive')}: {$review_count.positive}]{/capture}
 
                             {capture name='t_user_d_reviews_url'}reviews/view/user/{$user.user_hash}/1{/capture}
-                            {capture name='t_d_reviews_str'}[Disputed: {$review_count.disputed}]{/capture}
+                            {capture name='t_d_reviews_str'}[{lang('disputed')}: {$review_count.disputed}]{/capture}
 
                             {url type="anchor" url=$smarty.capture.t_user_all_reviews_url text=$smarty.capture.t_all_reviews_str attr=""}
                             {url type="anchor" url=$smarty.capture.t_user_p_reviews_url text=$smarty.capture.t_p_reviews_str attr=""}
@@ -76,7 +76,7 @@
                                                 </div>
                                             {/foreach}
                                             <div class="col-md-12">
-                                                <div class="col-md-7">Average</div>
+                                                <div class="col-md-7">{lang('average')}</div>
                                                 <div class="col-md-5">{rating rating=$review.average_rating}</div>
                                             </div>
                                         </div>
@@ -92,7 +92,7 @@
 
                     {if isset($items) && count($items) > 0}
                     <div class='well' style="background:white">
-                        <legend>Latest Listings</legend>
+                        <legend>{lang('latest_listings')}</legend>
                         {$c = 0}
                         {$last = count($items)-1}
                         {foreach from=$items item=item}
@@ -108,12 +108,12 @@
 
                     {if isset($user.pgp) == TRUE}
                     <div class="row">
-                        <div class="col-xs-3"><strong>PGP Fingerprint</strong></div>
+                        <div class="col-xs-3"><strong>{lang('pgp_fingerprint')}</strong></div>
                         <div class="col-xs-7">{substr($user.pgp.fingerprint, 0, -8)}<b>{substr($user.pgp.fingerprint,-8)}</b></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3"><strong>PGP Public Key</strong></div>
+                        <div class="col-md-3"><strong>{lang('pgp_public_key')}</strong></div>
                         <div class="col-xs-9">
                             <pre id="publicKeyBox" class="well">{$user.pgp.public_key|escape:"html":"UTF-8"}</pre>
                         </div>
