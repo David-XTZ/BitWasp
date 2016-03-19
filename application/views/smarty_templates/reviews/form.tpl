@@ -9,9 +9,9 @@
 
                 <div class="row">
                     <div class="col-xs-6">
-                        <b>Order Information</b>
+                        <b>{lang('order_information')}</b>
                         <ul>
-                            <li>This order was with {url type="anchor" url=$smarty.capture.t_vendor_url text=$review_info.vendor.user_name|escape:"html":"UTF-8" attr=''}.</li>
+                            <li>{lang('this_order_was_with')} {url type="anchor" url=$smarty.capture.t_vendor_url text=$review_info.vendor.user_name|escape:"html":"UTF-8" attr=''}.</li>
                             <li>{if $review_info.vendor_selected_upfront == '1'}
                                 Paid Up-front
                             {elseif $review_info.vendor_selected_escrow == '1'}
@@ -22,7 +22,7 @@
                             <li>Paid for: {$review_info.paid_time_f}.</li>
                             <li>Dispatched: {$review_info.dispatched_time_f}.</li>
                             <li>Complete: {$review_info.finalized_time_f}.</li>
-                            <li>Order cost + Shipping: {$coin.symbol} {$review_info.order_price}</li>
+                            <li>{lang('order_cost_shipping')}: {$coin.symbol} {$review_info.order_price}</li>
                             <li>Site Fee's: {$coin.symbol} {$review_info.fees}</li>
                             {if $review_info.disputed == '1'}
                                 <li>This order was <b>disputed</b> on {$review_info.disputed_time_f}</li>
@@ -85,20 +85,20 @@
                                     <label class="control-label col-xs-2" for="location">Comments</label>
                                     <div class="col-xs-7">
                                         <label class="radio-inline">
-                                            <input type='radio' class='form-control' name='vendor_comments_source' value='prepared' /> Use prepared feedback?
+                                            <input type='radio' class='form-control' name='vendor_comments_source' value='prepared' /> {lang('use_prepared_feedback')}
                                         </label>
 
                                         <select name='vendor_prepared_comments' autocomplete='off' class='form-control'>
                                             <option value=''></option>
-                                            <option value='Excellent vendor, would do business again.'>Excellent vendor, would do business again.</option>
-                                            <option value='Slow delivery.'>Poor delivery time.</option>
-                                            <option value='Poor communication.'>Poor communication.</option>
-                                            <option value='Poor communication & slow delivery.'>Poor communication & slow delivery.</option>
+                                            <option value='{lang('excellent_vendor_would_do_business')}'>{lang('excellent_vendor_would_do_business')}</option>
+                                            <option value='Slow delivery.'>{lang('poor_delivery_time')}</option>
+                                            <option value='{lang('poor_communication')}'>{lang('poor_communication')}</option>
+                                            <option value='{lang('poor_communication_slow_delivery')}'>{lang('poor_communication_slow_delivery')}</option>
                                             <option value='Fast delivery.'>Fast delivery.</option>
                                         </select>
 
                                         <label class="radio-inline">
-                                            <input type='radio' class='form-control' name='vendor_comments_source' value='input' /> Write own comment?
+                                            <input type='radio' class='form-control' name='vendor_comments_source' value='input' /> {lang('write_own_comment')}
                                         </label>
 
                                         <textarea class='form-control' name='vendor_free_comments'></textarea>
@@ -115,7 +115,7 @@
 
                         <div class='well' style='background:white;'>
                             <h4>{if count($review_info.items) > 1}
-                                    <input type='radio' name='review_length' value='short' /> Submit Short Feedback?"
+                                    <input type='radio' name='review_length' value='short' /> {lang('submit_short_feedback')}
                                 {else}
                                     Item Feedback <input type='hidden' name='review_length' value='short' />
                                 {/if}</h4>
@@ -139,7 +139,7 @@
 
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <label class="control-label col-xs-2" for="short_item_matches_desc">Matches Description</label>
+                                    <label class="control-label col-xs-2" for="short_item_matches_desc">{lang('matches_description')}</label>
                                     <div class="col-xs-3">
                                         <select name='short_item_matches_desc' autocomplete='off' class='form-control'>
                                             <option value=''></option>
@@ -159,19 +159,19 @@
                                     <label class="control-label col-xs-2" for="short_item_comments_source">Comments</label>
                                     <div class="col-xs-7">
                                         <label class="radio-inline">
-                                            <input type='radio' name='short_item_comments_source' class='form-control' value='prepared' /> Use prepared statements?
+                                            <input type='radio' name='short_item_comments_source' class='form-control' value='prepared' /> {lang('use_prepared_statements')}
                                         </label>
 
                                         <select name='short_item_prepared_comments' autocomplete='off' class='form-control'>
                                             <option value=''></option>
-                                            <option value='Did not match description.'>Did not match description.</option>
+                                            <option value='{lang('did_not_match_description')}'>{lang('did_not_match_description')}</option>
                                             <option value='Poor quality.'>Poor quality.</option>
-                                            <option value='Excellent quality.'>Excellent quality.</option>
-                                            <option value='Would purchase again.'>Would purchase again.</option>
+                                            <option value='{lang('excellent_quality')}'>{lang('excellent_quality')}</option>
+                                            <option value='{lang('would_purchase_again')}'>{lang('would_purchase_again')}</option>
                                         </select>
 
                                         <label class="radio-inline">
-                                            <input type='radio' name='short_item_comments_source' class='form-control' value='input' /> Write own comment?
+                                            <input type='radio' name='short_item_comments_source' class='form-control' value='input' /> {lang('write_own_comment')}
                                         </label>
                                         <textarea name='short_item_free_comments' class='form-control'></textarea>
                                     </div>
@@ -186,7 +186,7 @@
 
                         {if count($review_info.items) > 1}
                         <div class='well' style='background:white;'>
-                            <h4><input type='radio' name='review_length' value='long' class='form-control' /> Submit long review?</h4>
+                            <h4><input type='radio' name='review_length' value='long' class='form-control' /> {lang('submit_long_review')}</h4>
 
                             {$c=0}
                             {foreach from=$review_info.items item=item}
@@ -212,7 +212,7 @@
 
                                 <div class="form-group">
                                     <div class="col-xs-12">
-                                        <label class="control-label col-xs-2" for="item[{$c}][matches_desc]">Matches Description</label>
+                                        <label class="control-label col-xs-2" for="item[{$c}][matches_desc]">{lang('matches_description')}</label>
                                         <div class="col-xs-5">
                                             <select name='item[{$c}][matches_desc]' autocomplete='off' class='form-control'>
                                                 <option value=''></option>
@@ -236,50 +236,50 @@
                                         <div class="col-xs-5">
 
                                             <label class="radio-inline">
-                                                <input type='radio' class='form-control' name='item[{$c}][comments_source]' value='prepared' /> Use prepared statements?
+                                                <input type='radio' class='form-control' name='item[{$c}{lang('comments_source')}' value='prepared' /> {lang('use_prepared_statements')}
                                             </label>
-                                            <select name='item[{$c}][prepared_comments]' autocomplete='off' class='form-control'>
+                                            <select name='item[{$c}{lang('prepared_comments')}' autocomplete='off' class='form-control'>
                                                 <option value=''></option>
-                                                <option value='Did not match description.'>Did not match description.</option>
+                                                <option value='{lang('did_not_match_description')}'>{lang('did_not_match_description')}</option>
                                                 <option value='Poor quality.'>Poor quality.</option>
-                                                <option value='Excellent quality.'>Excellent quality.</option>
-                                                <option value='Would purchase again.'>Would purchase again.</option>
+                                                <option value='{lang('excellent_quality')}'>{lang('excellent_quality')}</option>
+                                                <option value='{lang('would_purchase_again')}'>{lang('would_purchase_again')}</option>
                                             </select>
 
                                             <label class="radio-inline">
-                                                <input type='radio' class='form-control' name='item[{$c}][comments_source]' value='input' /> Write own comment? <br />
+                                                <input type='radio' class='form-control' name='item[{$c}{lang('comments_source')}' value='input' /> {lang('write_own_comment')} <br />
                                             </label>
                                             <textarea class='form-control' name='item[{$c}][free_comments]'></textarea>
                                         </div>
                                     </div>
                                     <div class="col-xs-10 col-xs-offset-2">
-                                        {capture name="t_item_cs_field"}item[{$c}][comments_source]{/capture}
-                                        {capture name="t_item_ps_field"}item[{$c}][prepared_comments]{/capture}
+                                        {capture name="t_item_cs_field"}item[{$c}{lang('comments_source')}{/capture}
+                                        {capture name="t_item_ps_field"}item[{$c}{lang('prepared_comments')}{/capture}
                                         {form method="form_error" field=$smarty.capture.t_item_cs_field}
                                         {form method="form_error" field=$smarty.capture.t_item_ps_field}
                                     </div>
                                 </div>
 
-                                {capture name="t_item_cs_field"}item[{$c}][comments_source]{/capture}
-                                {capture name="t_item_ps_field"}item[{$c}][prepared_comments]{/capture}
+                                {capture name="t_item_cs_field"}item[{$c}{lang('comments_source')}{/capture}
+                                {capture name="t_item_ps_field"}item[{$c}{lang('prepared_comments')}{/capture}
                                 <div class="form-group">
                                     <div class="col-xs-12">
                                         <label class="control-label col-xs-2" for="location">Comments</label>
                                         <div class="col-xs-5">
 
                                             <label class="radio-inline">
-                                                <input type='radio' class='form-control' name='item[{$c}][comments_source]' value='prepared' /> Use prepared statements?
+                                                <input type='radio' class='form-control' name='item[{$c}{lang('comments_source')}' value='prepared' /> {lang('use_prepared_statements')}
                                             </label>
-                                            <select name='item[{$c}][prepared_comments]' autocomplete='off' class='form-control'>
+                                            <select name='item[{$c}{lang('prepared_comments')}' autocomplete='off' class='form-control'>
                                                 <option value=''></option>
-                                                <option value='Did not match description.'>Did not match description.</option>
+                                                <option value='{lang('did_not_match_description')}'>{lang('did_not_match_description')}</option>
                                                 <option value='Poor quality.'>Poor quality.</option>
-                                                <option value='Excellent quality.'>Excellent quality.</option>
-                                                <option value='Would purchase again.'>Would purchase again.</option>
+                                                <option value='{lang('excellent_quality')}'>{lang('excellent_quality')}</option>
+                                                <option value='{lang('would_purchase_again')}'>{lang('would_purchase_again')}</option>
                                             </select>
 
                                             <label class="radio-inline">
-                                                <input type='radio' class='form-control' name='item[{$c}][comments_source]' value='input' /> Write own comment? <br />
+                                                <input type='radio' class='form-control' name='item[{$c}{lang('comments_source')}' value='input' /> {lang('write_own_comment')} <br />
                                             </label>
                                             <textarea class='form-control' name='item[{$c}][free_comments]'></textarea>
                                         </div>
@@ -312,12 +312,12 @@
 
                 <div class='row'>
                     <div class='col-xs-6'>
-                        <b>Order Information</b>
+                        <b>{lang('order_information')}</b>
                         <ul>
-                            <li>This order was made by {url type="anchor" url=$smarty.capture.t_buyer_url text=$review_info.buyer.user_name attr=''}</li>
+                            <li>{lang('this_order_was_made_by')} {url type="anchor" url=$smarty.capture.t_buyer_url text=$review_info.buyer.user_name attr=''}</li>
                             <li>
                                 {if $review_info.vendor_selected_upfront == '1' OR $review_info.vendor_selected_escrow == '0'}
-                                Finalized Early.</li>
+                                {lang('finalized_early')}</li>
                                     <li>Paid for: {$review_info.paid_time_f}.</li>
                                     <li>Dispatched: {$review_info.dispatched_time_f}.</li>
                                     <li>Completed: {$review_info.finalized_time_f}.</li>
@@ -327,7 +327,7 @@
                                     <li>Paid for: {$review_info.paid_time_f}.</li>
                                     <li>Completed: {$review_info.finalized_time_f}.</li>
                                 {/if}
-                            <li>Order cost + Shipping: {$coin.symbol} {$review_info.price}</li>
+                            <li>{lang('order_cost_shipping')}: {$coin.symbol} {$review_info.price}</li>
                             <li>Site Fee's: {$coin.symbol} {$review_info.fees}</li>
                             {if $review_info.disputed == '1'}
                                 <li>This order was <b>disputed</b> on {$review_info.disputed_time_f}</li>
@@ -388,18 +388,18 @@
                                 <label class="control-label col-xs-2" for="buyer_comments_source">Comments</label>
                                 <div class="col-xs-5">
                                     <label class="radio-inline">
-                                        <input type='radio' class='form-control' name='buyer_comments_source' value='prepared' /> Use prepared statements?
+                                        <input type='radio' class='form-control' name='buyer_comments_source' value='prepared' /> {lang('use_prepared_statements')}
                                     </label>
 
                                     <select name='buyer_prepared_comments' class='form-control' autocomplete='off'>
                                         <option value=''></option>
                                         <option value='Fast payer.'>Fast payer.</option>
-                                        <option value='Would do business again.'>Would do business again.</option>
-                                        <option value='Will avoid in future.'>Will avoid in future.</option>
+                                        <option value='{lang('would_do_business_again')}'>{lang('would_do_business_again')}</option>
+                                        <option value='{lang('will_avoid_in_future')}'>{lang('will_avoid_in_future')}</option>
                                     </select>
 
                                     <label class="radio-inline">
-                                        <input type='radio' name='buyer_comments_source' class='form-control' value='input' /> Write own comment?
+                                        <input type='radio' name='buyer_comments_source' class='form-control' value='input' /> {lang('write_own_comment')}
                                     </label>
                                     <textarea name='buyer_free_comments' class='form-control'></textarea>
                                 </div>

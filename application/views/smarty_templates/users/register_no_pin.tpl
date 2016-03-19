@@ -40,7 +40,7 @@
 
                         <div class="form-group">
                             <div class="col-xs-12">
-                            <label class="control-label col-xs-2" for="password1">Password (confirm)</label>
+                            <label class="control-label col-xs-2" for="password1">{lang('password_confirm')}</label>
                             <div class="col-xs-5">
                                 <input type='password' class="form-control" id="password1" name='password1' value='' autocomplete="off" />
                             </div>
@@ -79,7 +79,7 @@
                         <div class="form-group">
                             <label class="control-label col-xs-2" for="force_pgp_warning"></label>
                             <div class="col-xs-5">
-                                If you are registering as a vendor, it is required you upload a PGP public key. Please have one ready on your first login.
+                                {lang('if_you_are_registering_as')}
                             </div>
                         </div>
                         {/if}
@@ -111,11 +111,11 @@
                         {if is_string($terms_of_service) == TRUE}
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <label class="control-label col-xs-2" for="terms_of_service">Terms of Service</label>
+                                <label class="control-label col-xs-2" for="terms_of_service">{lang('terms_of_service')}</label>
                                 <div class="col-xs-5">
                                     <textarea class='form-control' cols='6' rows='7' readonly>{$terms_of_service|escape:'html':'UTF-8'}</textarea>
                                     <br />
-                                    <input type='checkbox' name='tos_agree' value='1' /> Click to agree to the terms of service.
+                                    <input type='checkbox' name='tos_agree' value='1' /> {lang('click_to_agree_to_the')}
                                 </div>
                             </div>
                         </div>

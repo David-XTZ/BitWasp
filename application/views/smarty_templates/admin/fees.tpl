@@ -1,6 +1,6 @@
             <div class="col-md-9" id="admin_fees_panel">
 
-                <h2>{url type="anchor" url="admin/items" text="Back" attr='class="btn btn-default"'} Fees Configuration</h2>
+                <h2>{url type="anchor" url="admin/items" text="Back" attr='class="btn btn-default"'} {lang('fees_configuration')}</h2>
 
                 {assign var="defaultMessage" value=""}
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
@@ -88,7 +88,7 @@
                 {/if}
 
                 {form method="open" action="admin/items/fees" attr='class="form-horizontal"'}
-                    <h4>Create a Fee Range:</h4>
+                    <h4>{lang('create_a_fee_range')}:</h4>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" for="lower_limit">Lower Limit:</label>

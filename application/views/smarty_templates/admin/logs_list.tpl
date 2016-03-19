@@ -30,7 +30,7 @@
                     </tbody>
                 </table>
                 {else}
-                    There are no logs at this time.
+                    {lang('there_are_no_logs_at')}
                 {/if}
 
             </div>

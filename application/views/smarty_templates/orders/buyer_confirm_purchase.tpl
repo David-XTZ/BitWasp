@@ -7,16 +7,16 @@
                     {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
 
                 {if $order_type == "upfront"}
-<p align="justify">{$order.vendor.user_name|escape:"html":"UTF-8"} has requested this order is paid up-front. After
-payment is made to the order address, you will need authorize release of the funds before the
-order is dispatched.</p>
+<p align="justify">{$order.vendor.user_name|escape:"html":"UTF-8"} {lang('has_requested_this_order_is')}
+{lang('payment_is_made_to_the')}
+{lang('order_is_dispatched')}</p>
                     {else}
-<p align="justify">This order is proceeding via escrow. Once the payment has been processed the vendor will
-vendor will notify you once the order has been dispatched. When received you can release the funds to the vendor.
+<p align="justify">{lang('this_order_is_proceeding_via')}
+{lang('vendor_will_notify_you_once')}
 </p>
 {/if}
 
-                    <p>Review the order details, and enter your address if you are happy to proceed. Once confirmed, you will be able to pay to the order address.</p>
+                    <p>{lang('review_the_order_details_and')}</p>
 
                     {capture name='t_purchase_url'}purchases/confirm/{$order.id}{/capture}
                     {capture name="t_vendor_url"}user/{$order.vendor.user_hash}{/capture}
@@ -68,7 +68,7 @@ vendor will notify you once the order has been dispatched. When received you can
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <label class="control-label col-xs-3" for="buyer_address">Shipping Address:</label>
+                                    <label class="control-label col-xs-3" for="buyer_address">{lang('shipping_address')}:</label>
                                     <div class="col-xs-7">
                                         <textarea name='buyer_address' rows='5' class='form-control'></textarea>
                                     </div>
@@ -82,7 +82,7 @@ vendor will notify you once the order has been dispatched. When received you can
 
                         <div class="row">
                             <div class="row">
-                                <div class="col-xs-10">You don't have a refund address set up at the moment. Please enter one now, along with your password, in case you need a refund at any point.</div>
+                                <div class="col-xs-10">{lang('you_don_t_have_a')}</div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12">

@@ -1,6 +1,6 @@
 
             <div class="col-md-9">
-                <h2>Email Activation</h2>
+                <h2>{lang('email_activation')}</h2>
                 {assign var="defaultMessage" value="Enter your email and activation token to verify your account"}
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
 
@@ -19,7 +19,7 @@
 
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <label class="control-label col-md-3" for="activation_hash">Activation Token</label>
+                                <label class="control-label col-md-3" for="activation_hash">{lang('activation_token')}</label>
                                 <div class="col-md-5">
                                     <input type="text" class="form-control" id="activation_hash" name="activation_hash" value="" autocomplete="off" />
                                 </div>

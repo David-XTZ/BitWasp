@@ -1,4 +1,4 @@
-            {capture name="t_pubkeys_url"}accounts/public_keys{/capture}
+            {capture name="t_pubkeys_url"}{lang('accounts_public_keys')}{/capture}
             {capture name="t_buyer_url"}user/{$order.buyer.user_hash}{/capture}
             {capture name="t_accept_order_url"}orders/accept/{$order.id}{/capture}
 
@@ -9,9 +9,9 @@
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
 
                 {if $vendor_public_key == FALSE}
-                    You cannot proceed with this order until you set up a source of public keys. {url type="anchor" url=$smarty.capture.t_pubkeys_url text="Click here to set this up" attr=""}
+                    {lang('you_cannot_proceed_with_this')} {url type="anchor" url=$smarty.capture.t_pubkeys_url text="Click here to set this up" attr=""}
                 {else}
-                    A public key will automatically be used to create the order address.
+                    {lang('a_public_key_will_automatically')}
                 {/if}
 
                 <br /><br />
@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-xs-9 col-xs-offset-3">Your order will be <strong>{$order_type}</strong>.</div>
+                        <div class="col-xs-9 col-xs-offset-3">{lang('your_order_will_be')} <strong>{$order_type}</strong>.</div>
                     </div>
 
                     <div class='col-xs-12'>&nbsp;</div>

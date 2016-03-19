@@ -3,7 +3,7 @@
 
             <div class="col-md-9" id="order-details">
 
-                <h2>Order Details: #{$order.id}</h2>
+                <h2>{lang('order_details')}{$order.id}</h2>
 
                 {assign var="defaultMessage" value=""}
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
@@ -89,7 +89,7 @@
                                     <div class="row">
                                         <label class="col-xs-3" for="import_command">Import Command</label>
                                         <div class="col-xs-9">
-                                            <textarea id="import_command" class="form-control">addmultisigaddress 2 '["{$redeem_script.keys.0|escape:"html":"UTF-8"}","{$redeem_script.keys.1|escape:"html":"UTF-8"}","{$redeem_script.keys.2|escape:"html":"UTF-8"}"]'</textarea>
+                                            <textarea id="import_command" class="form-control">{lang('addmultisigaddress_2')} '["{$redeem_script.keys.0|escape:"html":"UTF-8"}","{$redeem_script.keys.1|escape:"html":"UTF-8"}","{$redeem_script.keys.2|escape:"html":"UTF-8"}"]'</textarea>
                                         </div>
                                     </div>
                                     {elseif $my_multisig_key.provider == 'JS'}
@@ -97,14 +97,14 @@
                                         <div class="row">
                                             <label class="col-xs-3" for="import_command">Import Command</label>
                                             <div class="col-xs-9">
-                                                <textarea id="import_command" class="form-control">addmultisigaddress 2 '["{$redeem_script.keys.0|escape:"html":"UTF-8"}","{$redeem_script.keys.1|escape:"html":"UTF-8"}","{$redeem_script.keys.2|escape:"html":"UTF-8"}"]'</textarea>
+                                                <textarea id="import_command" class="form-control">{lang('addmultisigaddress_2')} '["{$redeem_script.keys.0|escape:"html":"UTF-8"}","{$redeem_script.keys.1|escape:"html":"UTF-8"}","{$redeem_script.keys.2|escape:"html":"UTF-8"}"]'</textarea>
                                             </div>
                                         </div>
                                     </noscript>
                                     {/if}
                                     {if $order.final_transaction_id !== ''}
                                     <div class="row">
-                                        <label class="col-xs-3" for="import_command">Final Transaction</label>
+                                        <label class="col-xs-3" for="import_command">{lang('final_transaction')}</label>
                                         <div class="col-xs-9">
                                             {$order.final_transaction_id}
                                         </div>

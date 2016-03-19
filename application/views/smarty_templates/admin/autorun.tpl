@@ -6,13 +6,13 @@
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
 
                 {if $jobs == FALSE}
-                <p>There are no autorun jobs. These are stored in ./application/libraries/Autorun. Either
-                    this folder is empty or you have not configured your cron daemon to trigger
-                    the jobs. Add this following line to your users crontab to activate the jobs:</p>
+                <p>{lang('there_are_no_autorun_jobs')}
+                    {lang('this_folder_is_empty_or')}
+                    {lang('the_jobs_add_this_following')}:</p>
                 <pre>{$autorun_cmd}</pre>
                 {else}
 
-                <p>Jobs can be added to the Autorun system by placing them in ./application/libraries/Autorun. From there, you can choose to change the frequency or disable it altogether. To disable a job, check the box beside it and click Update.</p>
+                <p>{lang('jobs_can_be_added_to')}</p>
 
                 {form method="open" action="admin/autorun" attr='class="form-horizontal"'}
                     {form method="validation_errors"}

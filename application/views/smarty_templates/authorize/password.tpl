@@ -1,5 +1,5 @@
             <div class="col-md-9">
-                <h2>Authorize Request</h2>
+                <h2>{lang('authorize_request')}</h2>
 
                 {assign var="defaultMessage" value="As this page has heightened security, you must enter your login details to continue."}
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}

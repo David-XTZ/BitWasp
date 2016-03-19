@@ -47,7 +47,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-4" for="email_updates">Forward messages to email?</label>
+                            <label class="control-label col-xs-4" for="email_updates">{lang('forward_messages_to_email')}</label>
                             <div class="col-xs-6">
                                 <label class="radio-inline">
                                     <input type='radio' class="radio" name='email_updates' value='0' {if $user.email_updates == '0'}checked{/if} /> Disabled
@@ -111,7 +111,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-4" for="pgp">PGP Features</label>
                         <div class="col-xs-8">
-                            {url type="anchor" url="pgp/add" text="Add a PGP key" attr=''} to enable features such as two-factor authentication, or automatic encryption of messages.
+                            {url type="anchor" url="pgp/add" text="Add a PGP key" attr=''} {lang('to_enable_features_such_as')}
                         </div>
                     </div>
                     {/if}

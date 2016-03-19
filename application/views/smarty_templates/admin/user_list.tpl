@@ -42,13 +42,13 @@
                     </table>
                     {else}
                         {if isset($search_fail) && $search_fail == TRUE}
-                            No users were found in your query.
+                            {lang('no_users_were_found_in')}
                         {else}
-                            There are no users.
+                            {lang('there_are_no_users')}
                         {/if}
                     {/if}
 
-                    <a name="Search"></a><legend>Search for Users</legend>
+                    <a name="Search"></a><legend>{lang('search_for_users')}</legend>
                     {form method="open" action="admin/users/list" attr='class="form-horizontal"'}
                         <div class='row'>
                             <label class="control-label col-xs-2 col-xs-offset-1" for="user_name">User Name:</label>

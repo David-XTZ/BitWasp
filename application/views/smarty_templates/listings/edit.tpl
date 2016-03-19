@@ -85,7 +85,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-2" for="hidden">Invisible Listing</label>
+                            <label class="control-label col-xs-2" for="hidden">{lang('invisible_listing')}</label>
                             <div class="col-xs-5">
                                 <select name="hidden" id="hidden" class="form-control" autocomplete="off">
                                     <option value=''></option>
@@ -99,7 +99,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-2" for="prefer_upfront">Prefer up-front payment?</label>
+                            <label class="control-label col-xs-2" for="prefer_upfront">{lang('prefer_up_front_payment')}</label>
                             <div class="col-xs-5">
                                 <select name="prefer_upfront" id="prefer_upfront" class="form-control" autocomplete="off">
                                     <option value=""></option>

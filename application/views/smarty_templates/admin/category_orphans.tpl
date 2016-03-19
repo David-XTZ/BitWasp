@@ -5,7 +5,7 @@
                 {assign var="defaultMessage" value=""}
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
 
-                <p>Deleting this category will orphan <?php echo $list; ?>, please select another category to contain them.</p>
+                <p>{lang('deleting_this_category_will_orphan')} <?php echo $list; ?>{lang('please_select_another_category_to')}</p>
 
                 {form method="open" action="admin/items/fees" attr='class="form-horizontal"'}
                     <div class="form-group">

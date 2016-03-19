@@ -8,7 +8,7 @@
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
 
                 {form method="open" action=$smarty.capture.t_ban_user_url attr='class="form-horizontal"'}
-                    <p>Please confirm you wish to flag {$user.user_name|escape:"html":"UTF-8"} as {if $user.banned == '1'}un{/if}banned.</p>
+                    <p>{lang('please_confirm_you_wish_to')} {$user.user_name|escape:"html":"UTF-8"} as {if $user.banned == '1'}un{/if}banned.</p>
 
                     <div class="form-group">
                         <div class="col-xs-12">

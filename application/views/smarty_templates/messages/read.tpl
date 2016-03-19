@@ -32,7 +32,7 @@
 
                     {if $message.remove_on_read == TRUE}
                     <div class="col-xs-12">
-                        <div class="col-xs-4">This message will now self-destruct..</div>
+                        <div class="col-xs-4">{lang('this_message_will_now_self')}</div>
                     </div>
                     {/if}
 

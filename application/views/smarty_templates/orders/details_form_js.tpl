@@ -10,7 +10,7 @@
 
         <div class="form-group">
             <div class="col-xs-12">
-                <label class="col-xs-3" for="wallet_passphrase">Wallet Passphrase</label>
+                <label class="col-xs-3" for="wallet_passphrase">{lang('wallet_passphrase')}</label>
                 <div class="col-xs-9">
                     <input type="password" name="wallet_passphrase" id="wallet_passphrase" class="form-control" value="" />
                 </div>
@@ -37,7 +37,7 @@
 
             <div class="form-group">
 
-                <label class="col-xs-3" for="partially_signed_transaction">Wallet Passphrase</label>
+                <label class="col-xs-3" for="partially_signed_transaction">{lang('wallet_passphrase')}</label>
                 <div class="col-xs-9">
                     <textarea name="partially_signed_transaction" id="partially_signed_transaction" class="form-control"></textarea>
                     Sign with key {$signing_info.key_index}
@@ -56,7 +56,7 @@
 
 <label class="col-xs-3" for="message"></label>
 <div class="col-xs-9">
-    Waiting on the other user to sign.
+    {lang('waiting_on_the_other_user')}
 </div>
 {/if}
 <!-- End Display Unsigned/Partially signed transaction -->

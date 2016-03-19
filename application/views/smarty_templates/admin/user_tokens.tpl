@@ -1,11 +1,11 @@
             <div class="col-md-9" id="registration-tokens">
 
-                <h2>{url type="anchor" url='admin/users' text='Back' attr='class="btn btn-default"'} Registration Invites</h2>
+                <h2>{url type="anchor" url='admin/users' text='Back' attr='class="btn btn-default"'} {lang('registration_invites')}</h2>
 
                 {assign var="defaultMessage" value=""}
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
 
-                <legend>Create Registration Invites</legend>
+                <legend>Create {lang('registration_invites')}</legend>
                 {form method="open" action='admin/tokens' attr='class="form-horizontal"'}
                     <div class="form-group">
                         <div class="col-xs-12">

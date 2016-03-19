@@ -1,6 +1,6 @@
             <div class="col-md-9">
                 <div class="row-fluid">
-                    <h2>Two Factor Authentication</h2>
+                    <h2>{lang('two_factor_authentication')}</h2>
 
                     {assign var="defaultMessage" value="Enter the code displayed by your mobile device to continue:"}
                     {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}

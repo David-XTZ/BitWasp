@@ -3,11 +3,11 @@
                 <h2>{if $action_type == 'new'}Set{else}Update{/if} Email Address</h2>
 
                 <p align="justify">{if $action_type == 'new'}
-                    If you wish you can register an email address with your account, to receive updates about your orders, and notifications from the site.
+                    {lang('if_you_wish_you_can')}
                 {else}
-                    Use this form if you wish to change your email to something else.
+                    {lang('use_this_form_if_you')}
                 {/if}
-                An email will be sent to the address, and will need to follow the activation link, or manually enter the given details to confirm this change.
+                {lang('an_email_will_be_sent')}
                 </p>
 
                 {assign var="defaultMessage" value=""}
@@ -18,7 +18,7 @@
                     {form method="validation_errors"}
                 <div class='col-xs-10 col-xs-offset-1'>
                     <div class="panel panel-default">
-                        <div class="panel-heading">Pending Verification: </div>
+                        <div class="panel-heading">{lang('pending_verification')}: </div>
 
                         <table class="table">
                             <tbody>

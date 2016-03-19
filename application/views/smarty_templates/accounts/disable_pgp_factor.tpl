@@ -1,5 +1,5 @@
             <div class="col-md-9">
-                <h2>Disable Two Factor Authentication</h2>
+                <h2>Disable {lang('two_factor_authentication')}</h2>
 
                 {assign var="defaultMessage" value="Decrypt the following PGP message to remove two factor challenge on login:"}
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}

@@ -9,7 +9,7 @@
                     <div class="col-xs-6">
                         <strong>
                             {if $config.maintenance_mode == TRUE}
-                                maintenance mode
+                                {lang('maintenance_mode')}
                             {else}
                                 online
                             {/if}
@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="row">
-                    <label class="control-label col-xs-6" for="site_description">Site Description</label>
+                    <label class="control-label col-xs-6" for="site_description">{lang('site_description')}</label>
                     <div class="col-xs-6">{$config.site_description|escape:"html":"UTF-8"}</div>
                 </div>
 
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class='row'>
-                    <label class="control-label col-xs-6" for="allow_guests">Allow Guests to Browser?</label>
+                    <label class="control-label col-xs-6" for="allow_guests">{lang('allow_guests_to_browser')}</label>
                     <div class='col-xs-6'>{if $config.allow_guests == TRUE}Enabled{else}Disabled{/if}</div>
                 </div>
 

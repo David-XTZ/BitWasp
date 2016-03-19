@@ -4,8 +4,8 @@
             {assign var="defaultMessage" value=""}
             {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
 
-            Please pay an entry fee to {$entry_payment.bitcoin_address}.<br /><br />
+            {lang('please_pay_an_entry_fee')} {$entry_payment.bitcoin_address}.<br /><br />
 			
-			So far you have paid {$coin.symbol} {$paid} of the {$coin.symbol} {$entry_payment.amount} fee. Once the full amount has one confirmation your account will be activated.
+			{lang('so_far_you_have_paid')} {$coin.symbol} {$paid} of the {$coin.symbol} {$entry_payment.amount} {lang('fee_once_the_full_amount')}
 			  
         </div>

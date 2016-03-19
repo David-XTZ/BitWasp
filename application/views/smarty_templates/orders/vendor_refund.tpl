@@ -3,14 +3,14 @@
             <div class="span9" id="issue_refund">
                 <div class="row-fluid">
 
-			        <h2>Issue Refund: Order {$order.id}</h2>
+			        <h2>{lang('issue_refund_order')} {$order.id}</h2>
 
                     {assign var="defaultMessage" value=""}
                     {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
 
                     {form method="open" action=$smarty.capture.t_refund_url attr='class="form-horizontal"'}
             			<div class='col-xs-9'>
-				            Once you issue a refund, the Order Details page will display a new unsigned transaction which refunds the buyer the full amount.<Br /><br />
+				            {lang('once_you_issue_a_refund')}<Br /><br />
 				            <div class='row'>
                                 <div class='row'>
                                     <div class='col-xs-6'>

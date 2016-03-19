@@ -11,7 +11,7 @@
                             <div class='col-xs-7'>
                                 <label class='control-label'>
                                 {if $config.maintenance_mode == TRUE}
-                                    maintenance mode
+                                    {lang('maintenance_mode')}
                                 {else}
                                     online
                                 {/if}
@@ -30,7 +30,7 @@
 
                         <div class="form-group">
                             <div class='col-xs-12'>
-                                <label class="control-label col-xs-4" for="site_description">Site Description</label>
+                                <label class="control-label col-xs-4" for="site_description">{lang('site_description')}</label>
                                 <div class="col-xs-7">
                                     <input type="text" name="site_description" id="site_description" class='form-control' value="{$config.site_description|escape:"html":"UTF-8"}" />
                                 </div>
@@ -40,7 +40,7 @@
 
                         <div class="form-group">
                             <div class='col-xs-12'></div>
-                                <label class="control-label col-xs-4" for="location_settings">Location Settings</label>
+                                <label class="control-label col-xs-4" for="location_settings">{lang('location_settings')}</label>
                                 <div class="col-xs-7">
                                 <label class='control-label'>
                                     {url type="anchor" url="admin/locations" text="Configure" attr=''}
@@ -59,7 +59,7 @@
 
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <label class="control-label col-xs-4" for="allow_guests">Allow Guests to Browse?</label>
+                                <label class="control-label col-xs-4" for="allow_guests">{lang('allow_guests_to_browse')}</label>
                                 <div class="col-xs-7">
                                     <label class="radio-inline">
                                         <input type='radio' name='allow_guests' value='0' {if $config.allow_guests == '0'}checked{/if} /> Disabled

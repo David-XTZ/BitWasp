@@ -1,8 +1,8 @@
 
-                <p align="justify">Each time a new order is created, a new bitcoin address will show up here, as well as the identifier for this address. Note that funds are never sent to these addresses, but their public keys are used to make the  address.</p>
+                <p align="justify">{lang('each_time_a_new_order')}</p>
 
                 <div class="panel panel-default">
-                    <div class="panel-heading">Created Addresses: {count($usage)}</div>
+                    <div class="panel-heading">{lang('created_addresses')}: {count($usage)}</div>
                     {if count($usage) > 0}
                     <ul class="list-group">
                         {foreach from=$usage item=record}

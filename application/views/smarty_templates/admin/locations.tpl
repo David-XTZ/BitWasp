@@ -7,8 +7,8 @@
 
                 <div class="col-xs-12">
                     <div class="col-xs-10">
-                        When users are entering locations on the site, they can use the
-                        default country list, or you can configure the site to a specific
+                        {lang('when_users_are_entering_locations')}
+                        {lang('default_country_list_or_you')}
                         area.
                     </div>
                 </div>
@@ -39,7 +39,7 @@
 
                 <div class='col-xs-12'>&nbsp;</div>
 
-                <legend>Custom Locations</legend>
+                <legend>{lang('custom_locations')}</legend>
                 {form method="open" action="admin/locations" attr='class="form-horizontal"'}
 
                     <div class="form-group">

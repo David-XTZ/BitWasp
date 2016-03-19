@@ -1,6 +1,6 @@
         <div class="col-md-9">
             <div class='row'>
-				<h2>Two Factor Authentication</h2>
+				<h2>{lang('two_factor_authentication')}</h2>
 
                 {assign var="defaultMessage" value="Decrypt the following PGP text and enter it below: "}
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}

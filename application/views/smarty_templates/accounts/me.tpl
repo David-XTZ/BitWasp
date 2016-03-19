@@ -40,13 +40,13 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4"><strong>Display Login Activity?</strong></div>
+                    <div class="col-md-4"><strong>{lang('display_login_activity')}</strong></div>
                     <div class="col-md-8">{if $user.display_login_time == '1'}Enabled{else}Disabled{/if}</div>
                 </div>
 
 
                 <div class="row">&nbsp;</div>
-                <legend>Private Settings </legend>
+                <legend>{lang('private_settings')} </legend>
 
                 {if $request_emails == TRUE}
                 <div class="row">
@@ -55,14 +55,14 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4"><strong>Forward messages to email?</strong></div>
+                    <div class="col-md-4"><strong>{lang('forward_messages_to_email')}</strong></div>
                     <div class="col-md-8">{if $user.email_updates == TRUE AND (($user.email_address == '')==FALSE) }Enabled{else}Disabled{/if}</div>
                 </div>
                 {/if}
 
                 {if $user.user_role !== 'Admin'}
                 <div class="row">
-                    <div class="col-md-4"><strong>Bitcoin Public Keys</strong></div>
+                    <div class="col-md-4"><strong>{lang('bitcoin_public_keys')}</strong></div>
                     <div class="col-md-8">
                         {if $bip32 == FALSE}Not set up - {url type="anchor" url="bip32" text="do so now!" attr=""}
                         {else}Provider: {$bip32.provider} - {url type="anchor" url="bip32" text="Settings" attr=""}
@@ -87,11 +87,11 @@
                 <legend>Security</legend>
 
                 <div class="row">
-                    <div class="col-md-4"><strong>Two Factor Authentication</strong></div>
+                    <div class="col-md-4"><strong>{lang('two_factor_authentication')}</strong></div>
                     <div class="col-md-8">
                         {if $two_factor_setting == TRUE}
                             {if $two_factor.totp == TRUE}
-                                Enabled (Mobile App)
+                                {lang('enabled_mobile_app')}
                             {else}
                                 Enabled (PGP)
                             {/if}
@@ -112,18 +112,18 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4"><strong>Force PGP Messages?</strong></div>
+                    <div class="col-md-4"><strong>{lang('force_pgp_messages')}</strong></div>
                     <div class="col-md-8">{if $user.force_pgp_messages == '1'}Enabled{else}Disabled{/if}</div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4"><strong>Block non-PGP messages?</strong></div>
+                    <div class="col-md-4"><strong>{lang('block_non_pgp_messages')}</strong></div>
                     <div class="col-md-8">{if $user.block_non_pgp == '1'}Enabled{else}Disabled{/if}</div>
                 </div>
                 {else}
                 <div class="row">
                     <div class="col-md-4"><strong>PGP Features</strong></div>
-                    <div class="col-md-8">{url type="anchor" url="pgp/add" text="Add a PGP key" attr=""} to enable features such as two-factor authentication, or automatic encryption of messages.</div>
+                    <div class="col-md-8">{url type="anchor" url="pgp/add" text="Add a PGP key" attr=""} {lang('to_enable_features_such_as')}</div>
                 </div>
                 {/if}
 

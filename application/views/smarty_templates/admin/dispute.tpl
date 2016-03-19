@@ -3,7 +3,7 @@
 
             <div class="col-md-9" id="dispute-form">
 
-                <h2>{url type="anchor" url="admin" text="Back" attr='class="btn btn-default"'} Disputed Order #{$dispute.order_id}</h2>
+                <h2>{url type="anchor" url="admin" text="Back" attr='class="btn btn-default"'} {lang('disputed_order')}{$dispute.order_id}</h2>
 
                 {assign var="defaultMessage" value=""}
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
@@ -108,7 +108,7 @@
                                 <div class="col-xs-6">{$coin.symbol} {$admin_fee}</div>
                                 <div class="col-xs-6"><strong>User Funds:</strong></div>
                                 <div class="col-xs-6">{$coin.symbol} {$user_funds}</div>
-                                <input type='checkbox' name='relinquish_fee' value='1' /> Release sites fee for users
+                                <input type='checkbox' name='relinquish_fee' value='1' /> {lang('release_sites_fee_for_users')}
                             </div>
 
                             <div class="col-xs-6">
@@ -117,7 +117,7 @@
                                     <b>{if $current_order.vendor_selected_escrow == "1"}
                                         This dispute has been closed, as the transaction has been broadcast.
                                     {else}
-                                        This dispute has been closed.
+                                        {lang('this_dispute_has_been_closed')}
                                     {/if}</b>
                                 {else}
                                     {if $current_order.vendor_selected_escrow == "1"}
@@ -130,9 +130,9 @@
                                             <div class="col-xs-6"><input type="text" name="pay_vendor" class="form-control" value="" /></div>
                                         </div>
 
-                                        <div class="col-xs-12">Distribute the entire User Funds balance appropriately between the two users.</div>
+                                        <div class="col-xs-12">{lang('distribute_the_entire_user_funds')}</div>
                                     {else}
-                                        This order was paid up-front!
+                                        {lang('this_order_was_paid_up')}
                                     {/if}
                                 {/if}
                                 </div>

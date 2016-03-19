@@ -6,16 +6,16 @@
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
 
                 <div class="col-xs-12">
-                    <div class="col-xs-10">Here you can set whether a terms of service must be agreed to before
-                        users can register an account. Once the setting is enabled, the terms of service
-                        agreement can be edited.
+                    <div class="col-xs-10">{lang('here_you_can_set_whether')}
+                        {lang('users_can_register_an_account')}
+                        {lang('agreement_can_be_edited')}
                     </div>
                 </div>
 
                 {form method="open" action="admin/tos" attr='class="form-horizontal"'}
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label for="terms_of_service" class="control-label col-xs-3">Terms of Service</label>
+                            <label for="terms_of_service" class="control-label col-xs-3">{lang('terms_of_service')}</label>
                             <div class="col-xs-9"><textarea class="form-control" name="terms_of_service" id="terms_of_service" rows="7" >{$tos|escape:"html":"UTF-8"}</textarea></div>
                         </div>
                         <div class="col-xs-9 col-xs-offset-3">

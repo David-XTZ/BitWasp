@@ -1,5 +1,5 @@
             <div class="col-md-9">
-                <h2>Two Factor Authentication</h2>
+                <h2>{lang('two_factor_authentication')}</h2>
 
                 {assign var="defaultMessage" value="To disable two factor authentication, enter the token as displayed on your app:"}
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}

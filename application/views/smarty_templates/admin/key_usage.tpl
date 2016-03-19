@@ -8,7 +8,7 @@
                 <div class='col-xs-12 col-md-10 col-md-offset1'>
                     {if $count > 0}
                     <div class="panel panel-success">
-                        <div class="panel-heading">Created Addresses: {$count}</div>
+                        <div class="panel-heading">{lang('created_addresses')}: {$count}</div>
                         <div class="panel-body">
                             <table class="table table-condensed">
                                 <thead>
@@ -40,7 +40,7 @@
 
                     {else}
                     <div class="panel panel-danger">
-                        <div class="panel-heading">No addresses created yet.</div>
+                        <div class="panel-heading">{lang('no_addresses_created_yet')}</div>
                     </div>
                     {/if}
                 </div>

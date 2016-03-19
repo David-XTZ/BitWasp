@@ -17,7 +17,7 @@
                             {if strlen($smarty.capture.t_alter_form_errors) > 0}
                             <div class="alert alert-danger">{$smarty.capture.t_alter_form_errors}</div>
                             {/if}
-                            <h4>Review Shipping Costs</h4>
+                            <h4>{lang('review_shipping_costs')}</h4>
                             <br />
 
                             <div class='form-group'>
@@ -65,7 +65,7 @@
                 {form method="open" action=$smarty.capture.t_form_action attr=['class'=>'form-horizontal']}
                 <div class='container'>
                     <div class='well col-md-8'>
-                        <h4>New Shipping Cost</h4>
+                        <h4>{lang('new_shipping_cost')}</h4>
                         <br />
 
                         <div class="form-group">

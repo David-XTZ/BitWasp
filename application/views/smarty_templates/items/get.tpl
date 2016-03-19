@@ -54,7 +54,7 @@
                 {if $shipping_costs == TRUE}
                 <div class="caption">
                     <div class="col-xs-12">
-                        <div class='col-xs-6'><strong>Available Locations</strong></div>
+                        <div class='col-xs-6'><strong>{lang('available_locations')}</strong></div>
                         <div class='col-xs-6'><strong>Cost</strong></div>
                     </div>
 

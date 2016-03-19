@@ -52,7 +52,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-4" for="registration_allowed">Registration Allowed?</label>
+                            <label class="control-label col-xs-4" for="registration_allowed">{lang('registration_allowed')}</label>
                             <div class="col-xs-7">
                                 <label class="radio-inline">
                                     <input type='radio' name='registration_allowed' value='0' {if $config.registration_allowed == '0'}checked{/if} /> Disabled
@@ -67,7 +67,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-4" for="vendor_registration_allowed">Vendor Registration Allowed?</label>
+                            <label class="control-label col-xs-4" for="vendor_registration_allowed">Vendor {lang('registration_allowed')}</label>
                             <div class="col-xs-7">
                                 <label class="radio-inline">
                                     <input type='radio' name='vendor_registration_allowed' value='0' {if $config.vendor_registration_allowed == '0'}checked{/if} /> Disabled
@@ -82,7 +82,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-4" for="entry_payment_vendor">Vendor Registration Fee</label>
+                            <label class="control-label col-xs-4" for="entry_payment_vendor">{lang('vendor_registration_fee')}</label>
                             <div class="col-xs-4">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i>{$coin.code}</i></span>
@@ -96,7 +96,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-4" for="entry_payment_buyer">Buyer Registration Fee</label>
+                            <label class="control-label col-xs-4" for="entry_payment_buyer">{lang('buyer_registration_fee')}</label>
                             <div class="col-xs-4">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i>{$coin.code}</i></span>
@@ -110,7 +110,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-4" for="encrypt_private_messages">Encrypt Private Messages?</label>
+                            <label class="control-label col-xs-4" for="encrypt_private_messages">{lang('encrypt_private_messages')}</label>
                             <div class="col-xs-7">
                                 <label class="radio-inline">
                                     <input type='radio' name='encrypt_private_messages' value='0' {if $config.encrypt_private_messages == '0'}checked{/if} /> Disabled
@@ -125,7 +125,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-4" for="force_vendor_pgp">Force Vendor PGP?</label>
+                            <label class="control-label col-xs-4" for="force_vendor_pgp">{lang('force_vendor_pgp')}</label>
                             <div class="col-xs-7">
                                 <label class="radio-inline">
                                     <input type='radio' name='force_vendor_pgp' value='0' {if $config.force_vendor_pgp == '0'}checked{/if} /> Disabled

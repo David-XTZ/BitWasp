@@ -43,7 +43,7 @@
                         </tbody>
                     </table>
                     {else}
-                        <p>No messages in your inbox.</p>
+                        <p>{lang('no_messages_in_your_inbox')}</p>
                     {/if}
 
                     {form method="open" action="inbox" class="form-horizontal"}

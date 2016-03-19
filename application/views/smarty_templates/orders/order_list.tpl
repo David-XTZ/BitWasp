@@ -166,6 +166,6 @@
                         <!-- End Order Box -->
                     {/foreach}
                 {else}
-                    <p>You have no orders at present!</p>
+                    <p>{lang('you_have_no_orders_at')}</p>
                 {/if}
             </div>

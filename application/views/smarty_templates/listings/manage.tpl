@@ -28,7 +28,7 @@
                     </form>
                 {/foreach}
             {else}
-                You have no listings!
+                {lang('you_have_no_listings')}
             {/if}
 
             <br />

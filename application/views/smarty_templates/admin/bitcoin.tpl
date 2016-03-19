@@ -8,7 +8,7 @@
                 {if is_array($bitcoin_info) == TRUE}
                 <div class="row">
                     <div class="col-xs-6"><strong>{$coin.name} Status</strong></div>
-                    <div class="col-xs-6">{$coin.name}d is currently running{if $bitcoin_info.testnet == TRUE} <b>in the testnet</b>{/if}</div>
+                    <div class="col-xs-6">{$coin.name}{lang('d_is_currently_running')}{if $bitcoin_info.testnet == TRUE} <b>in the testnet</b>{/if}</div>
                 </div>
 
                 <div class="row">
@@ -19,7 +19,7 @@
                 {else}
                 <div class="row">
                     <div class="col-xs-6"><strong>{$coin.name} Status</strong></div>
-                    <div class="col-xs-6">Unable to make an outbound connection to the {strtolower($coin.name)} daemon.</div>
+                    <div class="col-xs-6">{lang('unable_to_make_an_outbound')} {strtolower($coin.name)} daemon.</div>
                 </div>
                 {/if}
 

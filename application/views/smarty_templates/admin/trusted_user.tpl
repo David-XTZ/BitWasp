@@ -1,13 +1,13 @@
 
 		    <div class="col-md-9" id="admin-trusted-user">
-                <h3>{url type="anchor" url="admin/items" text="Back" attr='class="btn btn-default"'} Trusted User Settings</h3>
+                <h3>{url type="anchor" url="admin/items" text="Back" attr='class="btn btn-default"'} {lang('trusted_user_settings')}</h3>
 
                 {assign var="defaultMessage" value=""}
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
 
                 <div class='row'>
-                    <p align='justify'>This form allows you to define what makes a 'trusted user'. This is used to determine if a vendor should be allowed to request up-front payment for particular items, or early finalization of escrow orders. </p>
-                    <p align='justify'>To ignore a particular attribute simply set it to zero.</p>
+                    <p align='justify'>{lang('this_form_allows_you_to')} </p>
+                    <p align='justify'>{lang('to_ignore_a_particular_attribute')}</p>
                 </div>
 
 
@@ -34,7 +34,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-3" for="completed_orders">Minimum complete orders:</label>
+                            <label class="control-label col-xs-3" for="completed_orders">{lang('minimum_complete_orders')}:</label>
                             <div class="col-xs-7">
                                 <input type='text' class='form-control' id='completed_orders' name='trusted_user_order_count' value="{$config.trusted_user_order_count|escape:"html":"UTF-8"}" />
                             </div>

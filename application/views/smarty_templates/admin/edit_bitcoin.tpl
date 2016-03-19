@@ -23,7 +23,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-4" for="bip32_mpk">BIP32 Extended Key</label>
+                            <label class="control-label col-xs-4" for="bip32_mpk">{lang('bip32_extended_key')}</label>
                             <div class="col-xs-7">
                                 <input type='text' name='bip32_mpk' class="form-control" value='{$config.bip32_mpk|escape:"html":"UTF-8"}' />
                             </div>
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class='col-xs-8 col-xs-offset-4'>{form method="form_error" field="bip32_iteration"}</div>
-                        <div class="col-xs-8 col-xs-offset-4">Only change this if you know what you're doing!</div>
+                        <div class="col-xs-8 col-xs-offset-4">{lang('only_change_this_if_you')}</div>
                     </div>
 
                     <div class="form-group">

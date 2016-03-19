@@ -1,5 +1,5 @@
             <div class="col-md-9">
-                <h2>Upload Public Key</h2>
+                <h2>{lang('upload_public_key')}</h2>
 
                 {assign var="defaultMessage" value="For security reasons, you must upload your PGP public key to continue:"}
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}

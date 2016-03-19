@@ -34,7 +34,7 @@
                     </tbody>
                 </table>
                 {else}
-                    There are no disputes at this time.
+                    {lang('there_are_no_disputes_at')}
                 {/if}
             
             </div>

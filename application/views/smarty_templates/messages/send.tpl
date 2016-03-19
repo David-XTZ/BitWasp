@@ -39,7 +39,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-2" for="delete_on_read">Delete After Reading?</label>
+                            <label class="control-label col-xs-2" for="delete_on_read">{lang('delete_after_reading')}</label>
                             <div class="col-xs-5">
                                 <div class="checkbox-inline">
                                     <label class="checkbox inline">

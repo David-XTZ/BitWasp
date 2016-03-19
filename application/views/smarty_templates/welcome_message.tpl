@@ -5,47 +5,47 @@
 
                 <div class='alert alert-danger'>{lang('warning_message')}</div>
 
-                <p>Set up your own Bitcoin marketplace, independent of other payment processing services.</p>
-                <p>Completely avoid the barrier of entry to the Bitcoin Market, and take part in the Bitcoin revolution!</p>
-                <p>Highly customizable, allowing you to tailor the site's configuration for your users requirements.</p>
-                <p>The project is open source, and well-reviewed, so rest assured people are working hard to keep your software secure.</p>
-                <p align='center'><a class="btn btn-success btn-medium" href="https://www.github.com/Bit-Wasp/BitWasp">Check out our source code on GitHub!</a> </p>
+                <p>{lang('set_up_your_own_bitcoin')}</p>
+                <p>{lang('completely_avoid_the_barrier_of')}</p>
+                <p>{lang('highly_customizable_allowing_you_to')}</p>
+                <p>{lang('the_project_is_open_source')}</p>
+                <p align='center'><a class="btn btn-success btn-medium" href="https://www.github.com/Bit-Wasp/BitWasp">{lang('check_out_our_source_code')}</a> </p>
 
 
                 <div class='row'>
-                    <p>Please consider donating to our Bitcoin address, 19EkDTAaGWySZv1QsWxyWwYMZpo7jpvPYe. Donations will go towards hosting, and to provide bounties for bugs.</p>
+                    <p>{lang('please_consider_donating_to_our')}</p>
 
                     <div class='row'>
                         <div class='col-md-4'>
-                            <h3>Fit for all Purposes</h3>
-                            <p>Maybe you want to solely sell your own products on the marketplace, or want to be the next BitMit. BitWasp is built for all purposes, and won't get in the way of what you'd like to do.</p>
+                            <h3>{lang('fit_for_all_purposes')}</h3>
+                            <p>{lang('maybe_you_want_to_solely')}</p>
                         </div>
 
                         <div class='col-md-4'>
-                            <h3>Innovative Security</h3>
-                            <p>Upload a PGP key for secure client-side encryption of messages, and to enable features like PGP Two-Factor login to stop attackers dead in their tracks. </p>
+                            <h3>{lang('innovative_security')}</h3>
+                            <p>{lang('upload_a_pgp_key_for')} </p>
                         </div>
 
                         <div class='col-md-4'>
-                            <h3>Be your own Bank</h3>
-                            <p>Bitcoin eliminate's the need for 3rd party payment processors, so no more per-transaction charges to use an online currency.</p>
+                            <h3>{lang('be_your_own_bank')}</h3>
+                            <p>{lang('bitcoin_eliminate_s_the_need')}</p>
                         </div>
                     </div>
 
                     <div class='row'>
                         <div class='col-md-4'>
-                            <h3>The code is Free! (Gratis & Libre)</h3>
-                            <p>as in free speech and free beer! BitWasp is released under the Agorist Licence - it's use is unencumbered by restrictions (and warrantees). The code is yours to deploy in a marketplace, or to release your own, way better version.</p>
+                            <h3>{lang('the_code_is_free_gratis')}</h3>
+                            <p>{lang('as_in_free_speech_and')}</p>
                         </div>
 
                         <div class='col-md-4'>
-                            <h3>Deal in your local currency</h3>
-                            <p>BitWasp gathers exchange rates for Bitcoin, against USD, GBP, and EUR from some of the leading Price Index API's. Currently comes with built-in support for CoinDesk and BitcoinAverage.com. With this feature, you can set prices in your local currency, and charge users based on the current value of Bitcoin.</p>
+                            <h3>{lang('deal_in_your_local_currency')}</h3>
+                            <p>{lang('bitwasp_gathers_exchange_rates_for')}</p>
                         </div>
 
                         <div class='col-md-4'>
-                            <h3>We're Privacy Conscious</h3>
-                            <p>BitWasp takes the privacy of it's users seriously. All uploaded images are stripped of GPS information, and other meta-data. Private Messages are encrypted using RSA encryption, and completely unreadable until you login and enter your PIN. This presents a barrier to attackers and even nosy administrators.</p>
+                            <h3>{lang('we_re_privacy_conscious')}</h3>
+                            <p>{lang('bitwasp_takes_the_privacy_of')}</p>
                         </div>
                     </div>
                 </div>

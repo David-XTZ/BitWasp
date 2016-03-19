@@ -19,7 +19,7 @@
                     {if ($display_sign_form == FALSE AND $order.partially_signed_transaction == null) OR $order.partially_signing_user_id == $current_user.user_id}
                         <label class="col-xs-3" for="message"></label>
                         <div class="col-xs-9">
-                            Waiting on the other user to sign.
+                            {lang('waiting_on_the_other_user')}
                         </div>
                     {/if}
 

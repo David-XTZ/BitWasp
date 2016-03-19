@@ -9,11 +9,11 @@
 
                 {form method="open" action=$smarty.capture.t_delete_url attr='class="form-horizontal"'}
 
-                    <p>Complete the following form to inform {$item.vendor.user_name|escape:"html":"UTF-8"} why this listing is going to be removed.</p>
+                    <p>{lang('complete_the_following_form_to')} {$item.vendor.user_name|escape:"html":"UTF-8"} {lang('why_this_listing_is_going')}</p>
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-3" for="reason_for_removal">Reason for Removal</label>
+                            <label class="control-label col-xs-3" for="reason_for_removal">{lang('reason_for_removal')}</label>
                             <div class="col-xs-7">
                                 <textarea name="reason_for_removal" id="reason_for_removal" class="form-control" rows="4"></textarea>
                             </div>

@@ -1,6 +1,6 @@
             <div class="col-md-9">
 
-                <h2>Two Factor Authentication</h2>
+                <h2>{lang('two_factor_authentication')}</h2>
 
                 {assign var="defaultMessage" value="To activate two factor authentication, decrypt the following challenge and paste it in the box below:"}
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}

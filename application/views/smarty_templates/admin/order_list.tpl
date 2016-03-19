@@ -39,6 +39,6 @@
                     </div>
 
                 {else}
-                    There are no orders at this time
+                    {lang('there_are_no_orders_at')}
                 {/if}
     		</div>
