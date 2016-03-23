@@ -20,3 +20,16 @@ $lang['average'] = '平均';
 $lang['latest_listings'] = '最新リスト';
 $lang['pgp_fingerprint'] = 'PGP指紋';
 $lang['pgp_public_key'] = 'PGP公開鍵';
+
+
+$lang['navbar/home'] = 'ホーム';
+$lang['navbar/items'] = 'アイテム';
+$lang['navbar/admin'] = '管理者';
+$lang['navbar/inbox'] = function($count_unread_messages){
+    return '受信箱'.($count_unread_messages ? ('('.$count_unread_messages.')'): '');
+};
+$lang['navbar/account'] = 'アカウント';
+$lang['navbar/logout'] = 'ログアウト';
+
+$lang['sidebar/orders'] = '注文';
+$lang['sidebar/disputes'] = '紛争';

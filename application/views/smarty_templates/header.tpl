@@ -54,12 +54,12 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     {if $current_user.user_role eq 'Admin'}
-                        <li>{url type="anchor" url="" text="Home" attr="title='Home'"}</li>
-                        <li>{url type="anchor" url="items" text="Items" attr="title='Items'"}</li>
-                        <li>{url type="anchor" url="admin" text="Admin" attr="title='Admin'"}</li>
-                        <li>{url type="anchor" url="inbox" text="Inbox{if $count_unread_messages gt 0} ($count_unread_messages){/if}" attr='title="Inbox"'}</li>
-                        <li>{url type="anchor" url="account" text="Account" attr="title='Account'"}</li>
-                        <li>{url type="anchor" url="logout" text="Logout" attr="title='Logout'"}</li>
+                        <li>{url type="anchor" url="" text=lang("navbar/home") attr="title='Home'"}</li>
+                        <li>{url type="anchor" url="items" text=lang("navbar/items") attr="title='Items'"}</li>
+                        <li>{url type="anchor" url="admin" text=lang("navbar/admin") attr="title='Admin'"}</li>
+                        <li>{url type="anchor" url="inbox" text=lang("navbar/inbox", [$count_unread_messages]) attr='title="Inbox"'}</li>
+                        <li>{url type="anchor" url="account" text=lang("navbar/account") attr="title='Account'"}</li>
+                        <li>{url type="anchor" url="logout" text=lang("navbar/logout") attr="title='Logout'"}</li>
 
                     {elseif $current_user.user_role eq 'Buyer'}
                         <li>{url type="anchor" url="" text="Home" attr="title='Home'"}</li>
@@ -111,8 +111,8 @@
                             {url type="anchor" url="listings" text="My Listings" attr="class='list-group-item' title='My Listings'"}
                             {url type="anchor" url="orders" text="Orders" attr="class='list-group-item' title='Orders'"}
                         {elseif $current_user['user_role'] eq 'Admin'}
-                            {url type="anchor" url="admin/orders" text="Orders" attr="class='list-group-item' title='Orders'"}
-                            {url type="anchor" url="admin/disputes" text="Disputes" attr="class='list-group-item' title='Disputes'"}
+                            {url type="anchor" url="admin/orders" text=lang("sidebar/orders") attr="class='list-group-item' title='Orders'"}
+                            {url type="anchor" url="admin/disputes" text=lang("sidebar/disputes") attr="class='list-group-item' title='Disputes'"}
                         {elseif $current_user['user_role'] eq 'Buyer'}
                             {url type="anchor" url="purchases" text="My Purchases" attr="class='list-group-item' title='Your Purchases'"}
                         {/if}

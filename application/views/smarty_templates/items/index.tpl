@@ -21,7 +21,7 @@
                         {capture name="t_item_url"}item/{$item.hash}{/capture}
                         {capture name="t_item_vendor_url"}user/{$item.vendor.user_hash}{/capture}
                         {capture name="t_reviews_url"}reviews/view/item/{$item.hash}{/capture}
-                        {capture name="t_reviews_str"}{$item.review_count} reviews{/capture}
+                        {capture name="t_reviews_str"}{lang('n_reviews', [$item.review_count])}{/capture}
                             <div class="col-sm-4 col-lg-4 col-md-4">
                                 <div class="thumbnail">
                                     {url type="anchor" url=$smarty.capture.t_item_url text=$smarty.capture.t_item_img attr="title='{$item.name|escape:"html":"UTF-8"}'"}

@@ -11,4 +11,6 @@ $lang['average'] = '平均';
 $lang['403_forbidden'] = '403 禁止されています。';
 $lang['directory_access_is_forbidden'] = 'ディレクトリアクセスは禁止されています。';
 $lang['items'] = 'アイテム';
-$lang['reviews'] = 'レビュー';
+$lang['n_reviews'] = function($counts){
+    return ((int)$counts).'件のレビュー';
+};
