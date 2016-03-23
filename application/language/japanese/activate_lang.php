@@ -1,4 +1,4 @@
 <?php
-$lang['email_activation'] = 'Email Activation';
-$lang['email_address'] = 'Email Address';
-$lang['activation_token'] = 'Activation Token';
+$lang['email_activation'] = 'メールアクティベーション';
+$lang['email_address'] = '電子メールアドレス';
+$lang['activation_token'] = 'アクティベーショントークン';
