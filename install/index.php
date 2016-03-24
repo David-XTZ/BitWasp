@@ -12,7 +12,7 @@ $storage_directory = $installdir.'/application/storage/';
 
 // Die if there appears to be contents in the config files.
 if(strlen(@file_get_contents($config_config_file)) > 20 && strlen(@file_get_contents($bitcoin_config_file)) > 20 && strlen(@file_get_contents($database_config_file)) > 20 && $_SERVER['QUERY_STRING'] !== 'end')
-	die();
+  die();
 
 // Modules which must be installed.
 $check['mcrypt_module'] 	= ( ! function_exists('mcrypt_encrypt')) ? FALSE : TRUE;
@@ -206,6 +206,8 @@ rpcconnect=127.0.0.1</pre><br />
 			require_once('includes/database_class.php');
 			require_once('includes/jsonrpcclient.php');
 			require_once('includes/core_class.php');
+			require_once('../vendor/bitwasp/bitcoin-lib/src/BIP32.php');
+			require_once('../vendor/bitwasp/bitcoin-lib/src/BitcoinLib.php');
 
 			$database = new Database();
 			$core = new Core();
@@ -223,7 +225,6 @@ rpcconnect=127.0.0.1</pre><br />
 				// First create the database, then create tables, then write config file
 				if ($bitcoin == NULL || $bitcoin->getinfo() == NULL) {
 					$message = "Unable to make connection to the bitcoin daemon. Is it running? Are your settings correct?";
-					 
 				} else if($database->create_database($data) == false) {
 					$message = $core->show_message('error',"The database could not be created, please verify your settings.");
 					

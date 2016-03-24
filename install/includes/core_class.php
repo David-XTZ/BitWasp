@@ -31,8 +31,12 @@ class Core {
 		if(!isset($data['tidy_urls']) OR !in_array($data['tidy_urls'], array('0','1')))
 			return FALSE;
         echo 'b';
-		if(empty($data['electrum_mpk']))
-			return FALSE;
+    $hex = BitWasp\BitcoinLib\BitcoinLib::base58_decode($data['electrum_mpk']);
+    $magic_bytes = substr($hex, 0, 8);
+    $magic_byte_info = BitWasp\BitcoinLib\BIP32::describe_magic_bytes($magic_bytes);
+    if(empty($data['electrum_mpk']) || !$magic_byte_info){
+      return FALSE;
+    }
 		if(!isset($data['force_vendor_pgp']) OR !in_array($data['force_vendor_pgp'], array('0','1')))
 			return FALSE;
         echo 'c';
