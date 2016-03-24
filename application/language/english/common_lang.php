@@ -22,6 +22,8 @@ $lang['pgp_fingerprint'] = 'PGP Fingerprint';
 $lang['pgp_public_key'] = 'PGP Public Key';
 
 
+$lang['navbar/login'] = 'Login';
+$lang['navbar/register'] = 'Register';
 $lang['navbar/home'] = 'Home';
 $lang['navbar/items'] = 'Items';
 $lang['navbar/admin'] = 'Admin';

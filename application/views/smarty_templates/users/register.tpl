@@ -1,6 +1,6 @@
             <div class="col-md-9">
-                <h2>Register</h2>
-                {assign var="defaultMessage" value="Enter your details to register an account: "}
+                <h2>{lang('register')}</h2>
+                {assign var="defaultMessage" value=lang("enter_your_details_to_register")}
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
                 {form method="open" action="register" attr=['class'=>'form-horizontal', 'name' => 'registerForm']}
 
@@ -8,7 +8,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-2" for="user_name">Username</label>
+                            <label class="control-label col-xs-2" for="user_name">{lang('username')}</label>
                             <div class="col-xs-5">
                                 <input type='text' class="form-control" id="user_name" name='user_name' value="{form method="set_value" field="user_name"}" size='12' />
                             </div>
@@ -19,7 +19,7 @@
                     {if $request_emails == TRUE}
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-2" for="email_address">Email Address</label>
+                            <label class="control-label col-xs-2" for="email_address">{lang('email_address')}</label>
                             <div class="col-xs-5">
                                 <input type='email_address' class="form-control" id="email_address" name='email_address' value='' autocomplete="off" />
                             </div>
@@ -30,7 +30,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-2" for="password0">Password</label>
+                            <label class="control-label col-xs-2" for="password0">{lang('password')}</label>
                             <div class="col-xs-5">
                                 <input type='password' class="form-control" id="password0" name='password0' value='' autocomplete="off" />
                             </div>
@@ -50,7 +50,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-2" for="message_pin0">Message PIN</label>
+                            <label class="control-label col-xs-2" for="message_pin0">{lang('message_pin')}</label>
                             <div class="col-xs-5">
                                 <input type='password' class="form-control" name='message_pin0' id="message_pin0" value='' autocomplete="off" />
                             </div>
@@ -79,7 +79,7 @@
                     {if isset($token_info) && is_array($token_info) }
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <label class="control-label col-xs-2" for="user_type">Role</label>
+                                <label class="control-label col-xs-2" for="user_type">{lang('role')}</label>
                                 <div class="col-xs-5">
                                     <label class='control-label'>{$token_info.user_type.txt}</label>
                                     <input type='hidden' id="user_type" name='user_type' value='{$token_info.user_type.int}' />
@@ -89,12 +89,12 @@
                     {else}
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <label class="control-label col-xs-2" for="user_type">Role</label>
+                                <label class="control-label col-xs-2" for="user_type">{lang('role')}</label>
                                 <div class="col-xs-5">
                                     <select name='user_type' id="user_type" class="form-control" >
                                         <option value=''></option>
-                                        <option value='1'>Buyer</option>
-                                        {if $vendor_registration_allowed == TRUE}<option value='2'>Vendor</option>{/if}
+                                        <option value='1'>{lang('buyer')}</option>
+                                        {if $vendor_registration_allowed == TRUE}<option value='2'>{lang('vendor')}</option>{/if}
                                     </select>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-2" for="location">Location</label>
+                            <label class="control-label col-xs-2" for="location">{lang('location')}</label>
                             <div class="col-xs-5">{$locations_select}</div>
                         </div>
                         <div class="col-xs-10 col-xs-offset-2">
@@ -127,7 +127,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <label class="control-label col-xs-2" for="local_currency">Local Currency</label>
+                            <label class="control-label col-xs-2" for="local_currency">{lang('local_currency')}</label>
                             <div class="col-xs-5">
                                 <select name='local_currency' id="local_currency" class="form-control">
                                     {foreach from=$currencies item=currency}
@@ -154,7 +154,7 @@
 
                     <!-- Captcha -->
                     <div class="form-group">
-                        <label class="control-label col-xs-2" for="captcha_img">Captcha</label>
+                        <label class="control-label col-xs-2" for="captcha_img">{lang("captcha")}</label>
                         <div class="col-xs-5">
                             <p align="center">
                                 {$captcha}
@@ -179,8 +179,8 @@
                         <label class="control-label col-xs-2" for="submit"></label>
                         <div class="col-xs-5">
                             <p align="center">
-                                <input type='submit' name='register_user' class="btn btn-primary" value="Register" />
-                                {url type="anchor" url="login" text="Cancel?" attr='title="Cancel" class="btn"'}
+                                <input type='submit' name='register_user' class="btn btn-primary" value="{lang('register')}" />
+                                {url type="anchor" url="login" text=lang("cancel") attr='title="Cancel" class="btn"'}
                             </p>
                         </div>
                     </div>

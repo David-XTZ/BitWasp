@@ -86,8 +86,8 @@
                             <li>{url type="anchor" url="" text="Home" attr="title='Home'"}</li>
                             <li>{url type="anchor" url="items" text="Items" attr="title='Items'"}</li>
                         {/if}
-                        <li>{url type="anchor" url="login" text="Login" attr="title='Login'"}</li>
-                        <li>{url type="anchor" url="register" text="Register" attr="title='Register'"}</li>
+                        <li>{url type="anchor" url="login" text=lang("navbar/login") attr="title='Login'"}</li>
+                        <li>{url type="anchor" url="register" text=lang("navbar/register") attr="title='Register'"}</li>
                     {/if}
                 </ul>
             </div>

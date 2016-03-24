@@ -22,6 +22,8 @@ $lang['pgp_fingerprint'] = 'PGP指紋';
 $lang['pgp_public_key'] = 'PGP公開鍵';
 
 
+$lang['navbar/login'] = 'ログイン';
+$lang['navbar/register'] = '登録';
 $lang['navbar/home'] = 'ホーム';
 $lang['navbar/items'] = 'アイテム';
 $lang['navbar/admin'] = '管理者';
