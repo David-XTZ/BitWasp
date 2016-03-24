@@ -3,11 +3,14 @@
 	function generate_key() {
 		if(check_wallet_passphrase_set("wallet_passphrase") == false) {
 		} else {
+      var is_bitcoin_testnet = document.getElementById('is_bitcoin_testnet')
+          .getAttribute('data-is-bitcoin-testnet');
 			var bitcore = require('bitcore');
 			var password = document.getElementById('wallet_passphrase').value;
 			var salt = document.getElementById('wallet_salt').value;
 			var seed = bitcore.util.sha256(salt+password);
-			var child = bitcore.HierarchicalKey.seed(seed).derive("m/0'/0").extendedPublicKeyString();
+      var child = bitcore.HierarchicalKey.seed(seed, is_bitcoin_testnet?'testnet':undefined)
+          .derive("m/0'/0").extendedPublicKeyString();
 			unset_wallet_passphrase("wallet_passphrase");
 			embed_extended_pubkey("js_extended_public_key", child);
 		}

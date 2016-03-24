@@ -38,6 +38,7 @@
     {$header.header_meta}
 </head>
 <body>
+    <div id="is_bitcoin_testnet" data-is-bitcoin-testnet="{$header.bitcoin_testnet|escape}"></div>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="row bodywrap">
             <div class="navbar-header">

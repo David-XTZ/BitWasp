@@ -70,7 +70,10 @@ class MY_Controller extends CI_Controller
             }
         }
 
+        $this->config->load('bitcoin');
+
         $this->smarty->assign('header', array('title' => $page_title,
+            'bitcoin_testnet' => ($this->config->item('testnet')?1:0),
             'site_title' => $this->bw_config->site_title,
             'site_description' => $this->bw_config->site_description,
             'maintenance_mode' => $this->bw_config->maintenance_mode,
