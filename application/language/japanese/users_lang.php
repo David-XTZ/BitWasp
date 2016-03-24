@@ -29,3 +29,4 @@ $lang['proceed'] = '進む';
 $lang['message_pin'] = 'メッセージ PINコード';
 $lang['this_protects_all_your_communications'] = 'This protects all your communications on this site, do not forget this PIN.これはこのサイト上ですべてのあなたのコミュニケーションを守るものです。PINコードを忘れないでください。';
 $lang['message_pin_confirm'] = 'メッセージ PINコード (確認)';
+$lang['enter_your_details_to_continue'] = '続けるためには詳細を入力してください。';

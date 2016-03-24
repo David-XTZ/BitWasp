@@ -94,33 +94,34 @@ $config['url_suffix'] = '';
 | there is an available translation if you intend to use something other
 | than english.
 |
-*/
-if(isset($_REQUEST['lang'])){
-    $lang = $_REQUEST['lang'];
-}else if(isset($_SESSION['lang'])){
-    $lang = $_SESSION['lang'];
-}else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])){
-    $tmp = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-    $lang = $tmp[0];
+ */
+if(isset($_SERVER['HTTP_HOST'])){
+    $tmp = array_shift((explode('.', $_SERVER['HTTP_HOST'])));
+    if(strlen($tmp) === 2 ){
+        $lang = $tmp;
+    }else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])){
+        $tmp = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        $lang = $tmp[0];
+    }else{
+        $lang = 'english';
+    }
+    switch(strtolower($lang)){
+    case 'english':
+    case 'en':
+        $config['language']	= 'english';
+        break;
+    case 'japanese':
+    case 'ja':
+    case 'jp':
+        $config['language']	= 'japanese';
+        break;
+    default:
+        $config['language']	= 'english';
+        break;
+    }
 }else{
-    $lang = 'english';
-}
-switch(strtolower($lang)){
-case 'english':
-case 'en':
     $config['language']	= 'english';
-    break;
-case 'japanese':
-case 'ja':
-case 'jp':
-    $config['language']	= 'japanese';
-    break;
-default:
-    $config['language']	= 'english';
-    break;
 }
-
-$_SESSION['lang'] = $config['language'];
 
 
 /*

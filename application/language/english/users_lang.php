@@ -29,3 +29,4 @@ $lang['proceed'] = 'Proceed';
 $lang['message_pin'] = 'Message PIN';
 $lang['this_protects_all_your_communications'] = 'This protects all your communications on this site, do not forget this PIN.';
 $lang['message_pin_confirm'] = 'Message PIN (confirm)';
+$lang['enter_your_details_to_continue'] = 'Enter your details to continue: ';
