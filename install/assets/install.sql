@@ -140,7 +140,7 @@ INSERT INTO `bw_config` (`parameter`, `value`) VALUES
 ('login_timeout', '30'),
 ('vendor_registration_allowed', '1'),
 ('captcha_length', '6'),
-('price_index', 'CoinDesk'),
+('price_index', 'BitcoinAverage'),
 ('max_main_balance', '0.00000000'),
 ('max_fees_balance', '0.00000000'),
 ('encrypt_private_messages', '%ENCRYPT_PRIVATE_MESSAGES%'),
@@ -909,7 +909,7 @@ CREATE TABLE IF NOT EXISTS `bw_shipping_costs` (
 CREATE TABLE IF NOT EXISTS `bw_transactions_block_cache` (
   `id` int(9) NOT NULL AUTO_INCREMENT,
   `tx_id` varchar(64) NOT NULL,
-  `tx_raw` text,
+  `tx_raw` MEDIUMTEXT,
   `block_height` int(9) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;

@@ -146,9 +146,17 @@ class Callback extends CI_Controller
         $order_finalized = array();
         $received_payments = array();
 
+        if($this->config->config['bitcoin']['testnet']){
+            $magic_byte = '6f';
+            $magic_p2sh_byte = 'c4';
+        }else{
+            $magic_byte = '00';
+            $magic_p2sh_byte = '05';
+        }
+
         foreach ($list as $cached_tx) {
             // Raw_transaction library is way faster than asking bitcoind.
-            $tx = RawTransaction::decode($cached_tx['tx_raw']);
+            $tx = RawTransaction::decode($cached_tx['tx_raw'], $magic_byte, $magic_p2sh_byte);
 
             // Check inputs of these transactions against our list of payments.
             if (count($tx['vin']) > 0 AND $payments_list !== FALSE) {
