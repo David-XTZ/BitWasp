@@ -11,6 +11,8 @@ function sign_raw_transaction()
 {
 	
 	var bitcore = require('bitcore');
+  var network = document.getElementById('is_bitcoin_testnet').getAttribute('data-is-bitcoin-testnet')?
+      bitcore.networks.testnet : bitcore.networks.livenet;
 	
 	<?php echo $crafted_html;
 	// Js generates
@@ -19,14 +21,13 @@ function sign_raw_transaction()
 	// Hasmap
 	?>
 	
-  var is_bitcoin_testnet = document.getElementById('is_bitcoin_testnet').getAttribute('data-is-bitcoin-testnet');
 	var password = document.getElementById('wallet_passphrase').value;
 	var salt = document.getElementById('wallet_salt').value;
 	var parent_pubkey = document.getElementById('extended_public_key').value;
 	var signing_key_index = document.getElementById('key_index').value;
 
 	var seed = bitcore.util.sha256(salt+password);
-	var hkey = bitcore.HierarchicalKey.seed(seed, is_bitcoin_testnet?'bitcoin':undefined);
+	var hkey = bitcore.HierarchicalKey.seed(seed, network.name);
 	var child = hkey.derive("m/0'/0");      	// child is the public key we stored!
 
     var optsb = opts;
@@ -36,8 +37,8 @@ function sign_raw_transaction()
 
 		var signing_key = hkey.derive(signing_key_index);
 		var buf = new bitcore.buffertools.Buffer(signing_key.eckey.private, 'hex');
-		var priv_key = new bitcore.PrivateKey(bitcore.networks.livenet.privKeyVersion, buf, true);
-		var wallet_key = new bitcore.WalletKey({network: bitcore.networks.livenet});
+		var priv_key = new bitcore.PrivateKey(network.privKeyVersion, buf, true);
+		var wallet_key = new bitcore.WalletKey({network: network});
 		var wif  = priv_key.as('base58');
 		wallet_key.fromObj({ priv: wif });
 

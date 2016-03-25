@@ -431,13 +431,17 @@ class Bw_bitcoin
         }
 
         $json = str_replace("'", '', $order['json_inputs']);
-        $decode_current_tx = \BitWasp\BitcoinLib\RawTransaction::decode($start_tx);
-        $decode_incoming_tx = \BitWasp\BitcoinLib\RawTransaction::decode($incoming_tx);
+        $decode_current_tx = \BitWasp\BitcoinLib\RawTransaction::decode($start_tx,
+                $this->CI->config->config['bitcoin']['magic_byte'],
+                $this->CI->config->config['bitcoin']['magic_p2sh_byte']);
+        $decode_incoming_tx = \BitWasp\BitcoinLib\RawTransaction::decode($incoming_tx,
+                $this->CI->config->config['bitcoin']['magic_byte'],
+                $this->CI->config->config['bitcoin']['magic_p2sh_byte']);
 
         // Does incoming tx match expected spend?
         $check = $this->CI->transaction_cache_model->check_if_expected_spend($decode_incoming_tx['vout'], $order['id']);
         if ($check !== $order['address'])
-            return 'Invalid transaction.';
+            return 'Invalid transaction.'.$check.' / '.$order['address'];
 
         // General check that signatures match tx
         $validate = \BitWasp\BitcoinLib\RawTransaction::validate_signed_transaction($incoming_tx, $json);
@@ -505,8 +509,11 @@ class Bw_bitcoin
         foreach ($decode_rs['keys'] as $i => $key)
             $pubkey_list .= '    "' . $key . '"' . (($i < 2) ? ',' : '') . "\n";
 
-        $p2sh_info = \BitWasp\BitcoinLib\RawTransaction::create_multisig(2, $decode_rs['keys']);
-        $decode_tx = \BitWasp\BitcoinLib\RawTransaction::decode($raw_transaction);
+        $p2sh_info = \BitWasp\BitcoinLib\RawTransaction::create_multisig(2, $decode_rs['keys'],
+                $this->CI->config->config['bitcoin']['magic_p2sh_byte']);
+        $decode_tx = \BitWasp\BitcoinLib\RawTransaction::decode($raw_transaction,
+                $this->CI->config->config['bitcoin']['magic_byte'],
+                $this->CI->config->config['bitcoin']['magic_p2sh_byte']);
         $utxos = "";
         foreach ($decode_tx['vin'] as $vin => $input) {
             $tx_info = $this->CI->transaction_cache_model->get_payment($input['txid']);
@@ -549,7 +556,7 @@ var hash   = bitcore.util.sha256ripe160(script.getBuffer());
 
 
 var p2shScript = script.serialize().toString('hex');
-var p2shAddress = new bitcore.Address.fromScript(p2shScript).toString();
+var p2shAddress = new bitcore.Address.fromScript(p2shScript, network.name).toString();
 console.log('got address: '+p2shAddress);
 
 var utxos = [

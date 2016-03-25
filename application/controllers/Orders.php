@@ -762,7 +762,6 @@ class Orders extends MY_Controller
         if ($data['display_sign_form'] == TRUE) {
             // JS
             if ($this->input->post('submit_js_signed_transaction') == 'Submit Transaction') {
-
                 if ($this->form_validation->run('submit_js_signed_transaction') == TRUE) {
                     $check = $this->bw_bitcoin->handle_order_tx_submission($data['order'], $this->input->post('js_transaction'), $data['my_multisig_key']);
 
@@ -860,10 +859,14 @@ class Orders extends MY_Controller
             $data['addrs'][(BitcoinLib::public_key_to_address($data['order']['public_keys']['admin']['public_key'], $this->config->config['bitcoin']['magic_byte']))] = 'admin';
 
         if (strlen($data['order']['partially_signed_transaction']) > 0) {
-            $data['raw_tx'] = RawTransaction::decode($data['order']['partially_signed_transaction']);
+            $data['raw_tx'] = RawTransaction::decode($data['order']['partially_signed_transaction'],
+                $this->config->config['bitcoin']['magic_byte'],
+                $this->config->config['bitcoin']['magic_p2sh_byte']);
             $data['signer'] = $this->accounts_model->get(array('id' => $data['order']['partially_signing_user_id']));
         } else if (strlen($data['order']['unsigned_transaction']) > 0) {
-            $data['raw_tx'] = RawTransaction::decode($data['order']['unsigned_transaction']);
+            $data['raw_tx'] = RawTransaction::decode($data['order']['unsigned_transaction'],
+                $this->config->config['bitcoin']['magic_byte'],
+                $this->config->config['bitcoin']['magic_p2sh_byte']);
         }
 
         $checkStrangeAddress = function () use ($data) {
