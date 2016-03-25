@@ -374,7 +374,10 @@ class Order_model extends CI_Model
             ));
             $public_keys = array($buyer_public_key['public_key'], $vendor_public_key['public_key'], $admin_public_key['public_key']);
             $sorted_keys = RawTransaction::sort_multisig_keys($public_keys);
-            $multisig_details = RawTransaction::create_multisig('2', $sorted_keys);
+            $this->config->load('bitcoin');
+            $multisig_details = RawTransaction::create_multisig('2', $sorted_keys,
+                $this->config->item('testnet')?'c4':'05'
+            );
 
             // If no errors, we're good to create the order!
             if ($multisig_details !== FALSE) {
