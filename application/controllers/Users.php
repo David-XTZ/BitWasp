@@ -264,7 +264,7 @@ In order to activate your account, please visit the following link:\n"
                 ) {
 
                     // Create a fees address, and record the entry payment
-                    $address = $this->bitcoin_model->get_fees_address($user_hash, $this->bw_config->currencies[0]['crypto_magic_byte']);
+                    $address = $this->bitcoin_model->get_fees_address($user_hash, $this->config->config['bitcoin']['magic_byte']);
                     $amount = (is_array($data['token_info']) ? $data['token_info']['entry_payment'] : $this->bw_config->$entry_fee);
                     $info = array('user_hash' => $user_hash,
                         'amount' => $amount,

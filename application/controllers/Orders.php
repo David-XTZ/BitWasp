@@ -104,13 +104,13 @@ class Orders extends MY_Controller
     public function vendor_accept($id)
     {
         if (!(is_numeric($id) && $id >= 0)) {
-            $this->current_user->set_return_message('Invalid order ID.');
+            $this->current_user->set_return_message('Invalid order ID. Enter correct Number format.');
             redirect('orders');
         }
 
         $data['order'] = $this->order_model->load_order($id, array('1'));
         if ($data['order'] == FALSE) {
-            $this->current_user->set_return_message('Invalid order ID.');
+            $this->current_user->set_return_message('Invalid order ID. Could not load order.');
             redirect('orders');
         }
 
@@ -857,7 +857,7 @@ class Orders extends MY_Controller
         $data['addrs'] = array($data['order']['buyer_payout'] => 'buyer',
             $data['order']['vendor_payout'] => 'vendor');
         if (isset($data['order']['public_keys']['admin']))
-            $data['addrs'][(BitcoinLib::public_key_to_address($data['order']['public_keys']['admin']['public_key'], $this->bw_config->currencies[0]['crypto_magic_byte']))] = 'admin';
+            $data['addrs'][(BitcoinLib::public_key_to_address($data['order']['public_keys']['admin']['public_key'], $this->config->config['bitcoin']['magic_byte']))] = 'admin';
 
         if (strlen($data['order']['partially_signed_transaction']) > 0) {
             $data['raw_tx'] = RawTransaction::decode($data['order']['partially_signed_transaction']);

@@ -464,21 +464,27 @@ class Order_model extends CI_Model
         }
 
         $json = json_encode($tx_pkScripts);
-        $tx_outs = array_map('strval', $tx_outs);
+        $tx_outs = array_map('intval', $tx_outs);
 
-        $raw_transaction = RawTransaction::create($tx_ins, $tx_outs);
+        $raw_transaction = RawTransaction::create($tx_ins, $tx_outs,
+            $this->config->config['bitcoin']['magic_byte'],
+            $this->config->config['bitcoin']['magic_p2sh_byte']);
         if ($raw_transaction == FALSE) {
             return 'An error occurred creating the transaction!';
         } else {
             // Embed redeem script into all tx's
-            $new_tx = RawTransaction::decode($raw_transaction);
+            $new_tx = RawTransaction::decode($raw_transaction,
+                $this->config->config['bitcoin']['magic_byte'],
+                $this->config->config['bitcoin']['magic_p2sh_byte']);
 
             foreach ($new_tx['vin'] as &$input_ref) {
                 //$empty_input = $script;
                 $input_ref['scriptSig']['hex'] = $script;
             }
             $raw_transaction = RawTransaction::encode($new_tx);
-            $decoded_transaction = RawTransaction::decode($raw_transaction);
+            $decoded_transaction = RawTransaction::decode($raw_transaction,
+                $this->config->config['bitcoin']['magic_byte'],
+                $this->config->config['bitcoin']['magic_p2sh_byte']);
 
             if ($this->update_order($order_id, array('unsigned_transaction' => $raw_transaction . " ",
                 'json_inputs' => "'$json'",
@@ -740,11 +746,18 @@ class Order_model extends CI_Model
         foreach ($paid as $record) {
             $order = $this->get($record['order_id']);
             $vendor_address = $order['vendor_payout'];
-            $admin_address = BitcoinLib::public_key_to_address($order['public_keys']['admin']['public_key'], $coin['crypto_magic_byte']);
+            $admin_address = BitcoinLib::public_key_to_address($order['public_keys']['admin']['public_key'], $this->config->config['bitcoin']['magic_byte']);
+
+            $admin_output = preg_replace('/^0+/', '',
+                (string)number_format(($order['fees'] + $order['extra_fees'] - 0.0001), 8, '', ''));
+            $vendor_output = preg_replace('/^0+/', '',
+                (string)number_format(($order['price'] + $order['shipping_costs'] - $order['extra_fees']),
+                8, '', ''));
 
             // Create the transaction outputs
-            $tx_outs = array($admin_address => (string)number_format(($order['fees'] + $order['extra_fees'] - 0.0001), 8),
-                $vendor_address => (string)number_format(($order['price'] + $order['shipping_costs'] - $order['extra_fees']), 8));
+            $tx_outs = array(
+                $admin_address => (int)$admin_output,
+                $vendor_address => (int)$vendor_output);
 
             $create_spend_transaction = $this->create_spend_transaction($order['address'], $tx_outs, $order['redeemScript']);
             if ($create_spend_transaction == TRUE) {

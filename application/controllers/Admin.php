@@ -963,7 +963,7 @@ class Admin extends MY_Controller
 
                                 // Add outputs for the sites fee, buyer, and vendor.
                                 if ($data['admin_fee'] > 0) {
-                                    $admin_address = BitcoinLib::public_key_to_address($data['current_order']['public_keys']['admin']['public_key'], $this->bw_config->currencies[0]['crypto_magic_byte']);
+                                    $admin_address = BitcoinLib::public_key_to_address($data['current_order']['public_keys']['admin']['public_key'], $this->config->config['bitcoin']['magic_byte']);
                                     $tx_outs[$admin_address] = (float)$data['admin_fee'];
                                 }
                                 if ($pay_buyer_amount > 0) {

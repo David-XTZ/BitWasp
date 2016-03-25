@@ -87,7 +87,7 @@ class Transaction_cache_model extends CI_Model
      */
     public function cache_list()
     {
-        $query = $this->db->limit(1000)->get('transactions_block_cache');
+        $query = $this->db->limit(10000)->get('transactions_block_cache');
         return ($query->num_rows() > 0) ? $query->result_array() : FALSE;
     }
 
@@ -129,11 +129,10 @@ class Transaction_cache_model extends CI_Model
                     $payment['order_id'] = $order['id'];
 
                     // If it's not already finalized, and payment is sufficient, record a paid order.
-                    if ($order['finalized'] == '0' AND abs($order_total - $total_payment) <= 0.01)
+                    if ($order['finalized'] == '0' AND $order_total <= $total_payment)
                     {
                         $this->record_paid_order($order['id']);
                     }
-
                 }
 
                 if ($payment['purpose'] == 'fees') {

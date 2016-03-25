@@ -25,5 +25,12 @@ $config['host']		= '%BTC_IP%';
 $config['port']		= '%BTC_PORT%';
 $config['url']		= (($config['ssl'] == TRUE) ? 'https://' : 'http://').$config['ssl'].$config['user'].':'.$config['password'].'@'.$config['host'].':'.$config['port'].'/';
 
+if($config['testnet']){
+    $config['magic_byte']		= '6f';
+    $config['magic_p2sh_byte']		= 'c4';
+}else{
+    $config['magic_byte']		= '00';
+    $config['magic_p2sh_byte']		= '05';
+}
 /* End of file bitcoin.php */
 /* Location: ./application/config/bitcoin.php */

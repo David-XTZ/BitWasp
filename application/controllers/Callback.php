@@ -65,11 +65,17 @@ class Callback extends CI_Controller
 
         $txs = array();
         foreach ($block['tx'] as $id => $tx_id) {
-            array_push($txs, array(
-                'tx_id' => $tx_id,
-                'tx_raw' => $this->bw_bitcoin->getrawtransaction($tx_id),
-                'block_height' => $block['height']
-            ));
+            $tx_raw = $this->bw_bitcoin->getrawtransaction($tx_id);
+            $block_height = $block['height'];
+
+            // here our priority is speed ... insert all transactions even if some elements are missing
+            // if($tx_id && $tx_raw && $block_height){
+                array_push($txs, array(
+                    'tx_id' => $tx_id,
+                    'tx_raw' => $tx_raw,
+                    'block_height' => $block_height
+                ));
+            // }
         }
 
         if (count($txs) > 0)
@@ -155,6 +161,9 @@ class Callback extends CI_Controller
         }
 
         foreach ($list as $cached_tx) {
+            if(!$cached_tx['tx_raw']){
+                $cached_tx['tx_raw'] = $this->bw_bitcoin->getrawtransaction($cached_tx['tx_id']);
+            }
             // Raw_transaction library is way faster than asking bitcoind.
             $tx = RawTransaction::decode($cached_tx['tx_raw'], $magic_byte, $magic_p2sh_byte);
 

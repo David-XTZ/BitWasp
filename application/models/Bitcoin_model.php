@@ -140,7 +140,7 @@ class Bitcoin_model extends CI_Model
             return FALSE;
 
         $coin = $this->bw_config->currencies[0];
-        $address = BitcoinLib::public_key_to_address($public_key, $coin['crypto_magic_byte']);
+        $address = BitcoinLib::public_key_to_address($public_key, $this->config->config['bitcoin']['magic_byte']);
 
         $order_id = ($usage == 'order') ? $order_id : '';
         $user_hash = ($usage == 'fees') ? $user_hash : '';

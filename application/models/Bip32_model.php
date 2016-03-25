@@ -182,7 +182,7 @@ class Bip32_model extends CI_Model
 
         if (count($query) > 0) {
             foreach ($query as &$row) {
-                $row['address'] = \BitWasp\BitcoinLib\BitcoinLib::public_key_to_address($row['public_key'], $this->bw_config->currencies[0]['crypto_magic_byte']);
+                $row['address'] = \BitWasp\BitcoinLib\BitcoinLib::public_key_to_address($row['public_key'], $this->config->config['bitcoin']['magic_byte']);
             }
         }
         return $query;

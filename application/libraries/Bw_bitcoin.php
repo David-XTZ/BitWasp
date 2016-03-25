@@ -463,7 +463,7 @@ class Bw_bitcoin
             }
             $incoming_tx = \BitWasp\BitcoinLib\RawTransaction::encode($copy);
             // Now need to reorder sigs!
-            $assoc = $this->associate_sigs_with_keys($incoming_tx, $json, $this->CI->bw_config->currencies[0]['crypto_magic_byte']);
+            $assoc = $this->associate_sigs_with_keys($incoming_tx, $json,$this->config->config['bitcoin']['magic_byte']);
             foreach ($copy['vin'] as $i => &$input) {
                 $input['scriptSig']['hex'] = \BitWasp\BitcoinLib\RawTransaction::_apply_sig_scripthash_multisig($assoc[$i], array('public_keys' => $decode_redeem_script['keys'], 'script' => $order['redeemScript']));
             }
@@ -472,10 +472,10 @@ class Bw_bitcoin
         }
 
         // Compare signatures!
-        $old_sig_map = $this->associate_sigs_with_keys($start_tx, $json, $this->CI->bw_config->currencies[0]['crypto_magic_byte']);
+        $old_sig_map = $this->associate_sigs_with_keys($start_tx, $json, $this->config->config['bitcoin']['magic_byte']);
 
         // Now check current signatures against users key. submittee must have signed.
-        $key_sig_map = $this->associate_sigs_with_keys($incoming_tx, $json, $this->CI->bw_config->currencies[0]['crypto_magic_byte']);
+        $key_sig_map = $this->associate_sigs_with_keys($incoming_tx, $json, $this->config->config['bitcoin']['magic_byte']);
 
         foreach ($key_sig_map as $i => $input_sig_map) {
             // If the number of sigs hasn't increased, or no sig from the current user exists..
