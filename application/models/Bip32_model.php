@@ -178,11 +178,12 @@ class Bip32_model extends CI_Model
      */
     public function get_user_key_usage($user_id)
     {
+        $this->config->load('bitcoin');
         $query = $this->db->get_where('bip32_user_keys', array('user_id' => $user_id))->result_array();
 
         if (count($query) > 0) {
             foreach ($query as &$row) {
-                $row['address'] = \BitWasp\BitcoinLib\BitcoinLib::public_key_to_address($row['public_key'], $this->config->config['bitcoin']['magic_byte']);
+                $row['address'] = \BitWasp\BitcoinLib\BitcoinLib::public_key_to_address($row['public_key'], $this->config->item('magic_byte'));
             }
         }
         return $query;
