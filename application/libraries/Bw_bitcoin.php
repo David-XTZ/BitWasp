@@ -379,7 +379,7 @@ class Bw_bitcoin
         return (is_string($info['errors']) && strlen($info['errors']) > 0) ? array('message' => $info['errors'], 'source' => 'Bitcoin') : FALSE;
     }
 
-    public function associate_sigs_with_keys($raw_tx, $json_string, $address_version = '00')
+    public function associate_sigs_with_keys($raw_tx, $json_string, $address_version = '00', $currently_unsigned = false)
     {
         $raw_tx = trim($raw_tx);
         $json_string = str_replace("'", '', $json_string);
@@ -400,7 +400,11 @@ class Bw_bitcoin
                 // Pay-to-script-hash. Check OP_FALSE <sig> ... <redeemScript>
                 // Store the redeemScript, then remove OP_FALSE + the redeemScript from the array.
                 $scripts = explode(" ", $vin['scriptSig']['asm']);
-                $redeemScript = \BitWasp\BitcoinLib\RawTransaction::decode_redeem_script(end($scripts));
+                if( $currently_unsigned ){
+                    $redeemScript = \BitWasp\BitcoinLib\RawTransaction::decode_redeem_script($vin['scriptSig']['hex']);
+                }else{
+                    $redeemScript = \BitWasp\BitcoinLib\RawTransaction::decode_redeem_script(end($scripts));
+                }
                 unset($scripts[(count($scripts) - 1)]); // Unset redeemScript
                 unset($scripts[0]); // Unset '0';
 
@@ -441,7 +445,7 @@ class Bw_bitcoin
         // Does incoming tx match expected spend?
         $check = $this->CI->transaction_cache_model->check_if_expected_spend($decode_incoming_tx['vout'], $order['id']);
         if ($check !== $order['address'])
-            return 'Invalid transaction.'.$check.' / '.$order['address'];
+            return 'Invalid transaction.';
 
         // General check that signatures match tx
         $validate = \BitWasp\BitcoinLib\RawTransaction::validate_signed_transaction($incoming_tx, $json);
@@ -467,19 +471,21 @@ class Bw_bitcoin
             }
             $incoming_tx = \BitWasp\BitcoinLib\RawTransaction::encode($copy);
             // Now need to reorder sigs!
-            $assoc = $this->associate_sigs_with_keys($incoming_tx, $json,$this->config->config['bitcoin']['magic_byte']);
+            $assoc = $this->associate_sigs_with_keys($incoming_tx, $json,$this->config->config['bitcoin']['magic_byte'], $currently_unsigned);
             foreach ($copy['vin'] as $i => &$input) {
                 $input['scriptSig']['hex'] = \BitWasp\BitcoinLib\RawTransaction::_apply_sig_scripthash_multisig($assoc[$i], array('public_keys' => $decode_redeem_script['keys'], 'script' => $order['redeemScript']));
             }
             $incoming_tx = \BitWasp\BitcoinLib\RawTransaction::encode($copy);
-            $decode_incoming_tx = \BitWasp\BitcoinLib\RawTransaction::decode($incoming_tx);
+            $decode_incoming_tx = \BitWasp\BitcoinLib\RawTransaction::decode($incoming_tx,
+                $this->CI->config->config['bitcoin']['magic_byte'],
+                $this->CI->config->config['bitcoin']['magic_p2sh_byte']);
         }
 
         // Compare signatures!
-        $old_sig_map = $this->associate_sigs_with_keys($start_tx, $json, $this->config->config['bitcoin']['magic_byte']);
+        $old_sig_map = $this->associate_sigs_with_keys($start_tx, $json, $this->CI->config->config['bitcoin']['magic_byte'], $currently_unsigned);
 
         // Now check current signatures against users key. submittee must have signed.
-        $key_sig_map = $this->associate_sigs_with_keys($incoming_tx, $json, $this->config->config['bitcoin']['magic_byte']);
+        $key_sig_map = $this->associate_sigs_with_keys($incoming_tx, $json, $this->CI->config->config['bitcoin']['magic_byte'], false);
 
         foreach ($key_sig_map as $i => $input_sig_map) {
             // If the number of sigs hasn't increased, or no sig from the current user exists..
@@ -533,7 +539,7 @@ class Bw_bitcoin
         foreach ($decode_tx['vout'] as $vout => $output) {
             $outs .= '{
     address: "' . $output['scriptPubKey']['addresses'][0] . '",
-    amount: ' . $output['value'] . "
+    amount: ' . ($output['value'] * 1e-8) . "
 }" . ($vout < (count($decode_tx['vout']) - 1) ? ',' : '');
         }
         $json = "

@@ -190,6 +190,7 @@ class Callback extends CI_Controller
                         // Someone is paying money to a watched address. Record the transaction.
                         if (in_array($tmp['address'], $watched_addresses['addresses'])) {
                             $tmp['purpose'] = $watched_addresses['data'][$tmp['address']]['purpose'];
+                            $tmp['value'] = $tmp['value'] * 1e-8;
                             $received_payments[] = $tmp;
                         }
                     }
