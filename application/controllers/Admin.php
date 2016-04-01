@@ -963,14 +963,15 @@ class Admin extends MY_Controller
 
                                 // Add outputs for the sites fee, buyer, and vendor.
                                 if ($data['admin_fee'] > 0) {
+                                    $this->config->load('bitcoin', TRUE);
                                     $admin_address = BitcoinLib::public_key_to_address($data['current_order']['public_keys']['admin']['public_key'], $this->config->config['bitcoin']['magic_byte']);
-                                    $tx_outs[$admin_address] = (float)$data['admin_fee'];
+                                    $tx_outs[$admin_address] = (int)($data['admin_fee'] * 1e8);
                                 }
                                 if ($pay_buyer_amount > 0) {
-                                    $tx_outs[$data['current_order']['buyer_payout']] = (float)$pay_buyer_amount;
+                                    $tx_outs[$data['current_order']['buyer_payout']] = (int)($pay_buyer_amount*1e8);
                                 }
                                 if ($pay_vendor_amount > 0) {
-                                    $tx_outs[$data['current_order']['vendor_payout']] = (float)$pay_vendor_amount;
+                                    $tx_outs[$data['current_order']['vendor_payout']] = (int)($pay_vendor_amount*1e8);
                                 }
 
                                 // Create spend transaction and redirect, otherwise display an error
