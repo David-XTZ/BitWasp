@@ -172,7 +172,7 @@ class MY_Controller extends CI_Controller
             {
                 $categories[$category['parent_id']]['count_child_items']
                     = $categories[$category['id']]['count_child_items']
-                    + $old_categories[$category['parent_id']]['count_child_items'];
+                    + $categories[$category['parent_id']]['count_child_items'];
             }
         }
 
