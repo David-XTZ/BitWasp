@@ -35,3 +35,6 @@ $lang['navbar/logout'] = 'Logout';
 
 $lang['sidebar/orders'] = 'Orders';
 $lang['sidebar/disputes'] = 'Disputes';
+$lang['sidebar/my_listings'] = 'My Listings';
+$lang['sidebar/my_purchases'] = 'Your Purchases';
+$lang['sidebar/categories'] = 'Categories';

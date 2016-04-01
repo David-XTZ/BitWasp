@@ -35,3 +35,6 @@ $lang['navbar/logout'] = 'ログアウト';
 
 $lang['sidebar/orders'] = '注文';
 $lang['sidebar/disputes'] = '紛争';
+$lang['sidebar/my_listings'] = '出品一覧';
+$lang['sidebar/my_purchases'] = '購入一覧';
+$lang['sidebar/categories'] = 'カテゴリー';
