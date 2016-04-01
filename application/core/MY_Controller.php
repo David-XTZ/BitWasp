@@ -112,7 +112,7 @@ class MY_Controller extends CI_Controller
                         ? $this->_prepare_menu($categories, 0, $this->_template_data_array['currentCat'])
                         : 'No Categories'),
                 'block' => FALSE,
-                'js' => $this->_prepare_js_menu($this->bw_config->categories, $this->_template_data_array['currentCat']),
+                'js' => $this->_prepare_js_menu($this->bw_config->categories),
                 'locations_select' => $this->location_model->generate_select_list($this->bw_config->location_list_source, 'location', 'span12'),
                 'locations_w_select' => $this->location_model->generate_select_list($this->bw_config->location_list_source, 'location', 'span12', FALSE, array('worldwide' => TRUE))
             ];
@@ -149,12 +149,30 @@ class MY_Controller extends CI_Controller
     public function _prepare_js_menu($categories)
     {
         $content = array();
-        foreach ($categories as $category) {
 
-            if (isset($categories[$category['parent_id']]))
+        // get all depth by O(n*log(n))
+        foreach ($categories as $key => $category) {
+            $parent_id = $category['parent_id'];
+            $depth = 0;
+            while(isset($categories[$parent_id]))
             {
-                $parent = & $categories[$category['parent_id']];
-                $parent['count_child_items'] += $category['count_child_items'];
+                $parent_id = $categories[$parent_id]['parent_id'];
+                $depth++;
+            }
+            $categories[$key]['depth'] = $depth;
+        }
+        // sort by depth
+        uasort($categories, function($a,$b){return ($a['depth'] > $b['depth']) ? -1 : 1;});
+
+        // PHP does not have C-like pointer.
+        // Also, modifying array under iteration causes weird behavior...
+        $old_categories = $categories;
+        foreach ($old_categories as $category) {
+            if (isset($old_categories[$category['parent_id']]))
+            {
+                $categories[$category['parent_id']]['count_child_items']
+                    = $categories[$category['id']]['count_child_items']
+                    + $old_categories[$category['parent_id']]['count_child_items'];
             }
         }
 
@@ -171,8 +189,6 @@ class MY_Controller extends CI_Controller
                 'tags' => "".$category['count_child_items']."",
                 'parent_id' => $category['parent_id']
             );
-
-
         }
 
         // Store all child categories as an array $menu[parentID]['children']
