@@ -444,8 +444,9 @@ class Bw_bitcoin
 
         // Does incoming tx match expected spend?
         $check = $this->CI->transaction_cache_model->check_if_expected_spend($decode_incoming_tx['vout'], $order['id']);
-        if ($check !== $order['address'])
+        if ($check !== $order['address']){
             return 'Invalid transaction.';
+        }
 
         // General check that signatures match tx
         $validate = \BitWasp\BitcoinLib\RawTransaction::validate_signed_transaction($incoming_tx, $json);

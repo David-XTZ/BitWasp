@@ -40,28 +40,46 @@ class Callback extends CI_Controller
     public function block($block_hash = NULL)
     {
         // Abort if no block hash is supplied.
-        if ($block_hash == NULL)
-            die();
+        if ($block_hash == NULL){
+            $this->load->model('admin_model');
+            $message = 'block hash is null';
+            $this->logs_model->add('Bitcoin Alert', 'Bitcoin Alert', $message, 'Alert');
+            die($message);
+        }
 
         $this->load->library('bw_bitcoin');
         $this->load->model('bitcoin_model');
         $this->load->model('transaction_cache_model');
 
         // Die if bitcoind is actually offline.
-        if ($this->bw_bitcoin->getinfo() == NULL)
-            die();
+        if ($this->bw_bitcoin->getinfo() == NULL){
+            $this->load->model('admin_model');
+            $message = 'bitcoind seems offline.';
+            $this->logs_model->add('Bitcoin Alert', 'Bitcoin Alert', $message, 'Alert');
+            die($message);
+        }
 
         // Reject already known blocks.
-        if ($this->transaction_cache_model->check_block_seen($block_hash) == TRUE)
-            die();
+        if ($this->transaction_cache_model->check_block_seen($block_hash) == TRUE){
+            $this->load->model('admin_model');
+            $message = 'this block is already seen.';
+            $this->logs_model->add('Bitcoin Alert', 'Bitcoin Alert', $message, 'Alert');
+            die($message);
+        }
 
         $block = $this->bw_bitcoin->getblock($block_hash);
-        if (!is_array($block) || !isset($block['tx']))
-            die();
+        if (!is_array($block) || !isset($block['tx'])){
+            $this->load->model('admin_model');
+            $message = 'invalid block: '.json_encode($block);
+            $this->logs_model->add('Bitcoin Alert', 'Bitcoin Alert', $message, 'Alert');
+            die($message);
+        }
 
         $watched_addresses = $this->bitcoin_model->watch_address_list();
-        if (count($watched_addresses) == 0)
-            die();
+        if (count($watched_addresses) == 0){
+            $message = 'we are watching no addresses';
+            die($message);
+        }
 
         $txs = array();
         foreach ($block['tx'] as $id => $tx_id) {

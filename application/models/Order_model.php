@@ -466,9 +466,10 @@ class Order_model extends CI_Model
         $json = json_encode($tx_pkScripts);
         $tx_outs = array_map('intval', $tx_outs);
 
+        $this->config->load('bitcoin', TRUE);
         $raw_transaction = RawTransaction::create($tx_ins, $tx_outs,
-            $this->config->config['bitcoin']['magic_byte'],
-            $this->config->config['bitcoin']['magic_p2sh_byte']);
+                $this->config->config['bitcoin']['magic_byte'],
+                $this->config->config['bitcoin']['magic_p2sh_byte']);
         if ($raw_transaction == FALSE) {
             return 'An error occurred creating the transaction!';
         } else {

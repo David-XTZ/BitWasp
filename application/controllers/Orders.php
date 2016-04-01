@@ -201,7 +201,7 @@ class Orders extends MY_Controller
 
                     $tx_outs = array();
                     // Add outputs for the sites fee, buyer, and vendor.
-                    $tx_outs[$data['order']['buyer_payout']] = (float)$data['order']['total_paid'] - 0.0001;
+                    $tx_outs[$data['order']['buyer_payout']] = (int)($data['order']['total_paid']*1e8 - 10000);
 
                     $create_spend_transaction = $this->order_model->create_spend_transaction($data['order']['address'], $tx_outs, $data['order']['redeemScript']);
                     if ($create_spend_transaction == TRUE) {
@@ -891,6 +891,14 @@ class Orders extends MY_Controller
             $data['payment_url'] = "bitcoin:{$data['order']['address']}?amount={$data['order']['order_price']}&message=Order+{$data['order']['id']}&label=Order+{$data['order']['id']}";
             $data['qr'] = $this->ciqrcode->generate_base64(array('data' => $data['payment_url']));
         }
+
+        // convert satoshis to btc for display
+        if(isset($data['raw_tx']['vout'])){
+            foreach ($data['raw_tx']['vout'] as &$vout) {
+                $vout['value'] = $vout['value']*1e-8;
+            }
+        }
+
         $data['page'] = 'orders/details';
         $data['title'] = 'Order Details: #' . $data['order']['id'];
 
