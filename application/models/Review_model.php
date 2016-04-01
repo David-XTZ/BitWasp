@@ -198,7 +198,8 @@ class Review_model extends CI_Model
         $query = $this->db->get('reviews');
         if ($query->num_rows() > 0) {
             $results = array();
-            foreach ($query->result_array() as $review) {
+            $reviews = $query->result_array();
+            foreach ($reviews as $review) {
                 $results[] = $this->parse_review_row($review);
             }
             return $results;
@@ -339,7 +340,7 @@ class Review_model extends CI_Model
      */
     public function create_review_time()
     {
-        return mktime('12', '0', '0', date("m"), date("d") + 1, date("y"));
+        return mktime('12', '0', '0', date("m"), date("d") + 1, date("Y"));
     }
 }
 
