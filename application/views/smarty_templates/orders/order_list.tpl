@@ -8,7 +8,7 @@
                     {foreach from=$orders item=order}
                         {capture name='t_order_details_url'}{if $current_user.user_role == 'Buyer'}purchases/details/{$order.id}{else}orders/details/{$order.id}{/if}{/capture}
                         {capture name="t_vendor_url"}user/{$order.vendor.user_hash}{/capture}
-                        {capture name="t_buyer_url"}user/{$order.vendor.user_hash}{/capture}
+                        {capture name="t_buyer_url"}user/{$order.buyer.user_hash}{/capture}
                         {capture name='t_dispute_url'}{if $current_user.user_role == 'Buyer'}purchases/dispute/{$order.id}{else}orders/dispute/{$order.id}{/if}{/capture}
                         {capture name='t_order_id_fmt'}#{$order.id}{/capture}
                         <!-- Order Box : Buyer : 1-->

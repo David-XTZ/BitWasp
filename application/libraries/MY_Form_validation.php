@@ -452,10 +452,10 @@ class MY_Form_validation extends CI_Form_validation
     public function check_prepared_comments_item($str)
     {
         return in_array($str, array(
-            'Did not match description.',
-            'Poor quality.',
-            'Excellent quality.',
-            'Would purchase again.'));
+            lang('did_not_match_description'),
+            lang('poor_quality'),
+            lang('excellent_quality'),
+            lang('would_purchase_again')));
     }
 
     /**
