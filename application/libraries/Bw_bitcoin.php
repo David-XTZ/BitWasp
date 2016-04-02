@@ -376,6 +376,10 @@ class Bw_bitcoin
         $info = $this->getinfo();
         if (!is_array($info))
             return FALSE;
+        $this->CI->config->load('bitcoin', true);
+        if(preg_match('/abnormally high number of blocks generated/', $info['errors']) && $this->CI->config->config['bitcoin']['testnet']){
+            return FALSE;
+        }
 
         // Return the string if there's an alert, otherwise false.
         return (is_string($info['errors']) && strlen($info['errors']) > 0) ? array('message' => $info['errors'], 'source' => 'Bitcoin') : FALSE;
