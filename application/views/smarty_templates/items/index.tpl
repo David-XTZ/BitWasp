@@ -5,7 +5,7 @@
                             {$links}
                         </div>
                         <h2>{if isset($custom_title) == TRUE}{$custom_title|escape:'html':'UTF-8'}
-                            {else}Items{/if}</h2>
+                            {else}{lang('items')}{/if}</h2>
                     </div>
                 </div>
 

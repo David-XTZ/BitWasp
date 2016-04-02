@@ -157,8 +157,8 @@ class Order_model extends CI_Model
                         $vendor_progress_message = "Disputed transaction. ";
                         break;
                     case '7':
-                        $buyer_progress_message = ($order['refund_time'] !== '') ? "Payment refunded." : "Purchase complete.";
-                        $vendor_progress_message = ($order['refund_time'] !== '') ? "Order refunded." : "Order complete.";
+                        $buyer_progress_message = ($order['refund_time'] !== '') ? lang("payment_refunded") : lang("purchase_complete");
+                        $vendor_progress_message = ($order['refund_time'] !== '') ? lang("order_refunded") : lang("order_complete");
                         break;
                     case '8':
                         $buyer_progress_message = "Awaiting refund.";

@@ -32,3 +32,4 @@ $lang['this_protects_all_your_communications'] = 'This protects all your communi
 $lang['message_pin_confirm'] = 'Message PIN (confirm)';
 $lang['enter_your_details_to_continue'] = 'Enter your details to continue: ';
 $lang['enter_your_details_to_register'] = 'Enter your details to register an account: ';
+$lang['your_account_created_please_login'] = 'Your account has been created, please login below: ';

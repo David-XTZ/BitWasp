@@ -17,9 +17,11 @@
                                 {if $current_user.user_role == 'Admin'}
                                     {url type="anchor" url=$smarty.capture.t_buyer_url text=$order.buyer.user_name attr=''}'s order with {url type="anchor" url=$smarty.capture.t_vendor_url text=$order.vendor.user_name|escape:"html":"UTF-8" attr=''}
                                 {elseif $current_user.user_role == 'Buyer'}
-                                    Order with {url type="anchor" url=$smarty.capture.t_vendor_url text=$order.vendor.user_name|escape:"html":"UTF-8" attr=''}:
+                                    {capture name="partner"}{url type="anchor" url=$smarty.capture.t_vendor_url text=$order.vendor.user_name|escape:"html":"UTF-8" attr=''}{/capture}
+                                    {lang('order_with_x', [$smarty.capture.partner])}:
                                 {elseif $current_user.user_role == 'Vendor'}
-                                    Order with {url type="anchor" url=$smarty.capture.t_buyer_url text=$order.buyer.user_name|escape:"html":"UTF-8" attr=''}:
+                                    {capture name="partner"}{url type="anchor" url=$smarty.capture.t_buyer_url text=$order.buyer.user_name|escape:"html":"UTF-8" attr=''}{/capture}
+                                    {lang('order_with_x', [$smarty.capture.partner])}:
                                 {/if}
                                 </div>
 
@@ -35,29 +37,29 @@
                                     {/foreach}
                                         <tr>
                                             <td></td>
-                                            <td>Shipping to {$order.buyer.location_f}</td>
+                                            <td>{lang('shipping_to', [$order.buyer.location_f])}</td>
                                             <td>{$coin.code} {number_format($fees.shipping_cost|escape:"html":"UTF-8",8)}</td>
                                         </tr>
                                     {if $current_user.user_role == 'Vendor'}
                                         <tr>
                                             <td></td>
-                                            <td>Fees</td>
+                                            <td>{lang('fees')}</td>
                                             <td>{$coin.code} {number_format($order.vendor_fees|escape:"html":"UTF-8",8)}</td>
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td><strong>Earnings</strong></td>
+                                            <td><strong>{lang('earnings')}</strong></td>
                                             <td>{$coin.code} {number_format($order.order_price|escape:"html":"UTF-8",8)}</td>
                                         </tr>
                                     {else}
                                         <tr>
                                             <td></td>
-                                            <td>Fees</td>
+                                            <td>{lang('fees')}</td>
                                             <td>{$coin.code} {number_format($fees.fee|escape:"html":"UTF-8",8)}</td>
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td><strong>Total</strong></td>
+                                            <td><strong>{lang('total')}</strong></td>
                                             <td>{$coin.code} {number_format($order.order_price|escape:"html":"UTF-8",8)}</td>
                                         </tr>
                                     {/if}
@@ -74,20 +76,20 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Payment Details</div>
+                            <div class="panel-heading">{lang('payment_details')}</div>
                             <div class="panel-body">
                                 <div class="col-xs-12 col-md-10">
                                     <div class="row">
-                                        <label class="col-xs-3" for="address">Address</label>
+                                        <label class="col-xs-3" for="address">{lang('bitcoin_address')}</label>
                                         <div class="col-xs-9">{$order.address}</div>
                                     </div>
                                     <div class="row">
-                                        <label class="col-xs-3" for="redeem_script">Redeem Script</label>
+                                        <label class="col-xs-3" for="redeem_script">{lang('redeem_script')}</label>
                                         <div class="col-xs-9"><textarea id="redeem_script" class="form-control">{$order.redeemScript|escape:"html":"UTF-8"}</textarea></div>
                                     </div>
                                     {if $my_multisig_key.provider == 'Manual'}
                                     <div class="row">
-                                        <label class="col-xs-3" for="import_command">Import Command</label>
+                                        <label class="col-xs-3" for="import_command">{lang('import_command')}</label>
                                         <div class="col-xs-9">
                                             <textarea id="import_command" class="form-control">{lang('addmultisigaddress_2')} '["{$redeem_script.keys.0|escape:"html":"UTF-8"}","{$redeem_script.keys.1|escape:"html":"UTF-8"}","{$redeem_script.keys.2|escape:"html":"UTF-8"}"]'</textarea>
                                         </div>

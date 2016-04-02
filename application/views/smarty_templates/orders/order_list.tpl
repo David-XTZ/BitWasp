@@ -1,5 +1,5 @@
             <div class="col-md-9" id="my-orders">
-                <h2>{if $current_user.user_role == 'Vendor'}My Orders{else}My Purchases{/if}</h2>
+                <h2>{if $current_user.user_role == 'Vendor'}{lang('my_orders')}{else}{lang('my_purchases')}{/if}</h2>
 
                 {assign var="defaultMessage" value=""}
                 {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
@@ -25,23 +25,23 @@
 
                                     {if $current_user.user_role == 'Buyer'}
                                     <div class="row">
-                                        <div class="col-xs-4"><strong>Vendor</strong></div>
+                                        <div class="col-xs-4"><strong>{lang('vendor')}</strong></div>
                                         <div class="col-xs-8" style='word-wrap: break-word;'>{url type='anchor' url=$smarty.capture.t_vendor_url text=$order.vendor.user_name|escape:"html":"UTF-8" attr=''}</div>
                                     </div>
                                     {else}
                                     <div class="row">
-                                        <div class="col-xs-4"><strong>Buyer</strong></div>
+                                        <div class="col-xs-4"><strong>{lang('buyer')}</strong></div>
                                         <div class="col-xs-8" style='word-wrap: break-word;'>{url type='anchor' url=$smarty.capture.t_buyer_url text=$order.buyer.user_name|escape:"html":"UTF-8" attr=''}</div>
                                     </div>
                                     {/if}
 
                                     <div class="row">
-                                        <div class="col-xs-4"><strong>Price</strong></div>
+                                        <div class="col-xs-4"><strong>{lang('price')}</strong></div>
                                         <div class="col-xs-8">{$current_user.currency.symbol}{$order.price_l}</div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-xs-4"><strong>Updated</strong></div>
+                                        <div class="col-xs-4"><strong>{lang('updated')}</strong></div>
                                         <div class="col-xs-8">{$order.time_f}</div>
                                     </div>
                                 </div>
@@ -80,7 +80,7 @@
                                     <input type="hidden" name="recount_order_id" value="{$order.id}" />
                                     <input type="hidden" name="place_order_id" value="{$order.id}" />
                                 {else}
-                                    {url type="anchor" url=$smarty.capture.t_order_details_url text="Details" attr='class="btn btn-primary btn-block"'}
+                                    {url type="anchor" url=$smarty.capture.t_order_details_url text=lang("details") attr='class="btn btn-primary btn-block"'}
                                 {/if}
 
                                 {if $current_user.user_role == 'Buyer' AND $order.progress == '1'}
@@ -123,35 +123,35 @@
                                             <div class="text-center bs-wizard-stepnum">Step 1</div>
                                             <div class="progress"><div class="progress-bar"></div></div>
                                             <a href="#" class="bs-wizard-dot"></a>
-                                            <div class="bs-wizard-info text-center">Order accepted</div>
+                                            <div class="bs-wizard-info text-center">{lang('order_accepted')}</div>
                                         </div>
 
                                         <div class="col-xs-3 bs-wizard-step {if $order.progress > 2}complete{else}disabled{/if}"><!-- complete -->
                                             <div class="text-center bs-wizard-stepnum">Step 2</div>
                                             <div class="progress"><div class="progress-bar"></div></div>
                                             <a href="#" class="bs-wizard-dot"></a>
-                                            <div class="bs-wizard-info text-center">Payment made</div>
+                                            <div class="bs-wizard-info text-center">{lang('payment_made')}</div>
                                         </div>
                                         {if $order.refund_time !== ''}
                                             <div class="col-xs-3 bs-wizard-step {if $order.progress == 7}complete{else}disabled{/if}">
                                                 <div class="text-center bs-wizard-stepnum">Step 3</div>
                                                 <div class="progress"><div class="progress-bar"></div></div>
                                                 <a href="#" class="bs-wizard-dot"></a>
-                                                <div class="bs-wizard-info text-center">Refund complete</div>
+                                                <div class="bs-wizard-info text-center">{lang('refund_complete')}</div>
                                             </div>
                                         {else}
                                             <div class="col-xs-3 bs-wizard-step {if $order.progress > 4}complete{else}disabled{/if}"><!-- complete -->
                                                 <div class="text-center bs-wizard-stepnum">Step 3</div>
                                                 <div class="progress"><div class="progress-bar"></div></div>
                                                 <a href="#" class="bs-wizard-dot"></a>
-                                                <div class="bs-wizard-info text-center">Item dispatched</div>
+                                                <div class="bs-wizard-info text-center">{lang('item_dispatched')}</div>
                                             </div>
 
                                             <div class="col-xs-3 bs-wizard-step {if $order.progress == 7}complete{else}disabled{/if}"><!-- active -->
                                                 <div class="text-center bs-wizard-stepnum">Step 4</div>
                                                 <div class="progress"><div class="progress-bar"></div></div>
                                                 <a href="#" class="bs-wizard-dot"></a>
-                                                <div class="bs-wizard-info text-center">Order complete</div>
+                                                <div class="bs-wizard-info text-center">{lang('order_complete')}</div>
                                             </div>
                                         {/if}
                                     </div>

@@ -2,7 +2,7 @@
 $lang['added'] = '追加済み';
 $lang['updated'] = '更新済み';
 $lang['available_locations'] = '選択可能な地域';
-$lang['cost'] = 'コスト';
+$lang['cost'] = '値段';
 $lang['recent_reviews'] = '最近のレビュー';
 $lang['all_reviews'] = 'すべてのレビュー';
 $lang['positive'] = '良い評価';
@@ -14,3 +14,5 @@ $lang['items'] = 'アイテム';
 $lang['n_reviews'] = function($counts){
     return ((int)$counts).'件のレビュー';
 };
+$lang['message'] = 'メッセージ';
+$lang['purchase'] = '購入';

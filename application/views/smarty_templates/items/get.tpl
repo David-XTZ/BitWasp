@@ -5,7 +5,7 @@
         {capture name='t_vendor_url'}user/{$item.vendor.user_hash}{/capture}
         {capture name='t_vendor_reviews_url'}reviews/view/user/{$item.vendor.user_hash}{/capture}
         {capture name="t_reviews_url"}reviews/view/item/{$item.hash}{/capture}
-        {capture name="t_reviews_str"}{$item.review_count} reviews{/capture}
+        {capture name="t_reviews_str"}{lang('n_reviews', [$item.review_count])}{/capture}
 
         <div class="col-md-9" id="item_detail">
 
@@ -29,10 +29,10 @@
                     <h4>{url type="anchor" url=$smarty.capture.t_item_url text=$item.name|escape:"html":"UTF-8" attr="title='{$item.name|escape:"html":"UTF-8"}'"}</h4>
                     <p class="pull-right">
                         {if $current_user.logged_in == TRUE}
-                            {if $current_user.user_hash != $item.vendor.user_hash}{url type="anchor" url=$smarty.capture.t_message_vendor_url text="Message" attr='class="btn btn-default"'}<br />{/if}
+                            {if $current_user.user_hash != $item.vendor.user_hash}{url type="anchor" url=$smarty.capture.t_message_vendor_url text=lang("message") attr='class="btn btn-default"'}<br />{/if}
                             {if $current_user.user_role == 'Buyer'}
                                 <input type="hidden" name="item_hash" value="{$item.hash}" style="display:none" />
-                                <input type="submit" name="submit_purchase" value="Purchase" class="btn btn-primary">
+                                <input type="submit" name="submit_purchase" value="{lang('purchase')}" class="btn btn-primary">
                             {/if}
                         {/if}
                     </p>
@@ -55,7 +55,7 @@
                 <div class="caption">
                     <div class="col-xs-12">
                         <div class='col-xs-6'><strong>{lang('available_locations')}</strong></div>
-                        <div class='col-xs-6'><strong>Cost</strong></div>
+                        <div class='col-xs-6'><strong>{lang('cost')}</strong></div>
                     </div>
 
                     {foreach from=$shipping_costs item=shipping_charge}
@@ -83,15 +83,15 @@
 
             {if $reviews == TRUE}
             <div class="well" style="background:white;">
-                <h4>Recent Reviews</h4>
+                <h4>{lang("recent_reviews")}</h4>
                 {capture name='t_item_all_reviews_url'}reviews/view/item/{$item.hash}{/capture}
-                {capture name='t_all_reviews_str'}[All Reviews: {$review_count.all}]{/capture}
+                {capture name='t_all_reviews_str'}[{lang('all_reviews')}: {$review_count.all}]{/capture}
 
                 {capture name='t_item_p_reviews_url'}reviews/view/item/{$item.hash}/0{/capture}
-                {capture name='t_p_reviews_str'}[Positive: {$review_count.positive}]{/capture}
+                {capture name='t_p_reviews_str'}[{lang('positive')}: {$review_count.positive}]{/capture}
 
                 {capture name='t_item_d_reviews_url'}reviews/view/item/{$item.hash}/1{/capture}
-                {capture name='t_d_reviews_str'}[Disputed: {$review_count.disputed}]{/capture}
+                {capture name='t_d_reviews_str'}[{lang('disputed')}: {$review_count.disputed}]{/capture}
 
                 {url type="anchor" url=$smarty.capture.t_item_all_reviews_url text=$smarty.capture.t_all_reviews_str attr=""}
                 {url type="anchor" url=$smarty.capture.t_item_p_reviews_url text=$smarty.capture.t_p_reviews_str attr=""}
@@ -114,7 +114,7 @@
                             {/foreach}
                             <div class="col-md-12">
                                 <div class="col-md-7">
-                                    Average
+                                    {lang('average')}
                                 </div>
                                 <div class="col-md-5">
                                     {for $var1=1 to $review.average_rating}<span class="glyphicon glyphicon-star"></span>{/for}{for $var=$var1 to 5}<span class="glyphicon glyphicon-star-empty"></span>{/for}

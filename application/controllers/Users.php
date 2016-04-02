@@ -278,7 +278,7 @@ In order to activate your account, please visit the following link:\n"
                     $this->users_model->set_entry_paid($user_hash);
                     $message = ($this->bw_config->request_emails)
                         ? "Your account has been created! You'll need to verify your email address by clicking the link we just sent"
-                        : "Your account has been created, please login below: ";
+                        : lang('your_account_created_please_login');
                 }
                 $this->current_user->set_return_message($message,'success');
                 redirect('login');
