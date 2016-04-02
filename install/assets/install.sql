@@ -260,6 +260,7 @@ CREATE TABLE IF NOT EXISTS `bw_exchange_rates` (
   `usd` decimal(10,4) NOT NULL,
   `eur` decimal(10,4) NOT NULL,
   `gbp` decimal(10,4) NOT NULL,
+  `jpy` decimal(10,4) NOT NULL,
   `btc` int(11) NOT NULL DEFAULT '1',
   `price_index` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)

@@ -342,6 +342,7 @@ class Bw_bitcoin
         if ($this->CI->bw_config->price_index == 'CoinDesk') {
             $update = array('time' => strtotime($rates->time->updated),
                 'usd' => str_replace(",", "", $rates->bpi->USD->rate),
+                'jpy' => str_replace(",", "", $rates->bpi->JPY->rate),
                 'gbp' => str_replace(",", "", $rates->bpi->GBP->rate),
                 'eur' => str_replace(",", "", $rates->bpi->EUR->rate),
                 'price_index' => $rates->price_index
@@ -351,6 +352,7 @@ class Bw_bitcoin
                 'usd' => ($rates->USD->averages->last !== '0.0000') ? str_replace(",", "", $rates->USD->averages->last) : $this->CI->currencies_model->get_exchange_rate('usd'),
                 'gbp' => ($rates->GBP->averages->last !== '0.0000') ? str_replace(",", "", $rates->GBP->averages->last) : $this->CI->currencies_model->get_exchange_rate('gbp'),
                 'eur' => ($rates->EUR->averages->last !== '0.0000') ? str_replace(",", "", $rates->EUR->averages->last) : $this->CI->currencies_model->get_exchange_rate('eur'),
+                'jpy' => ($rates->JPY->averages->last !== '0.0000') ? str_replace(",", "", $rates->JPY->averages->last) : $this->CI->currencies_model->get_exchange_rate('jpy'),
                 'price_index' => $rates->price_index
             );
         }
