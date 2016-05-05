@@ -88,7 +88,7 @@ foreach($check as $key => $outcome) {
     <center><h1>Install</h1></center>
     <?php 
     // Do sanity checks on the environment first. 
-    if($environment_check == FALSE) { ?>
+    if($environment_check == FALSE && $_SERVER['QUERY_STRING'] !== 'end') { ?>
     
 		<form>
 			<fieldset>
@@ -165,7 +165,7 @@ foreach($check as $key => $outcome) {
 				
 				<li>Force incoming messages to be PGP encrypted?<br />Account -> Edit -> Force PGP Messages</li><br />
 
-				<li>Set critical directories to read-only:<br />$ chmod 755 <?php echo $installdir; ?> -R && chmod 777 <?php echo $installdir; ?>/application/storage/ </li><br />
+				<li>Set critical directories to read-only:<br />$ chmod 755 <?php echo $installdir; ?> -R && chmod 777 <?php echo $installdir; ?>/application/storage/ && chmod 600 <?php echo $installdir; ?>/install/ -R </li><br />
 				
 				<li><a href='../'>Click here to see your new Bitwasp install!</a></li>
 			</ul>
