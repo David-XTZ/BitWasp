@@ -6,7 +6,7 @@
                     <div class="col-md-12 btn-group">
                        <h2>{$user.user_name|escape}
                            <div class='pull-right'>
-                               {url type="anchor" url="account/edit" text="Edit" attr='class="btn btn-default"'}
+                               {url type="anchor" url="account/edit" text=lang("edit") attr='class="btn btn-default"'}
                                {if $request_emails == TRUE}
                                    {if $user.email_address == NULL}
                                        {url type="anchor" url="accounts/email" text="Set Email" attr='class="btn btn-default"'}
@@ -14,7 +14,7 @@
                                        {url type="anchor" url="accounts/email" text="Update Email" attr='class="btn btn-default"'}
                                    {/if}
                                {/if}
-                               {url type="anchor" url="accounts/password" text="Change Password" attr='class="btn btn-default"'}
+                               {url type="anchor" url="accounts/password" text=lang("change_password") attr='class="btn btn-default"'}
                            </div>
                        </h2>
                     </div>
@@ -25,23 +25,23 @@
                 <div class="col-xs-12">&nbsp;</div>
 
                 <div class="row">
-                    <div class="col-md-4"><strong>Profile URL</strong></div>
+                    <div class="col-md-4"><strong>{lang('profile_url')}</strong></div>
                     <div class="col-md-8">{url type="anchor" url=$smarty.capture.t_profile_url text="" attr=''}</div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4"><strong>Location</strong></div>
+                    <div class="col-md-4"><strong>{lang('location')}</strong></div>
                     <div class="col-md-8">{$user.location_f}</div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4"><strong>Local Currency</strong></div>
+                    <div class="col-md-4"><strong>{lang('local_currency')}</strong></div>
                     <div class="col-md-8">{$user.currency.name} ({$user.currency.symbol})</div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-4"><strong>{lang('display_login_activity')}</strong></div>
-                    <div class="col-md-8">{if $user.display_login_time == '1'}Enabled{else}Disabled{/if}</div>
+                    <div class="col-md-8">{if $user.display_login_time == '1'}{lang('enabled')}{else}{lang('disabled')}{/if}</div>
                 </div>
 
 
@@ -71,12 +71,12 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4"><strong>{if $user.user_role == 'Vendor'}Payout{else}Refund{/if} Address</strong></div>
+                    <div class="col-md-4"><strong>{if $user.user_role == 'Vendor'}{lang('payout')}{else}{lang('refund')}{/if} {lang('address')}</strong></div>
                     <div class="col-md-8">
                         {if is_array($payout)}
                             {$payout.address|escape:"html":"UTF-8"} - {url type="anchor" url="accounts/payout" text="Settings" attr=''}
                         {else}
-                            Not set up - {url type="anchor" url="accounts/payout" text="do so now!" attr=''}
+                            {lang('not_set_up')} - {url type="anchor" url="accounts/payout" text=lang("do_so_now") attr=''}
                         {/if}
                     </div>
                 </div>
@@ -84,7 +84,7 @@
 
 
                 <div class="row">&nbsp;</div>
-                <legend>Security</legend>
+                <legend>{lang('security')}</legend>
 
                 <div class="row">
                     <div class="col-md-4"><strong>{lang('two_factor_authentication')}</strong></div>
@@ -93,13 +93,13 @@
                             {if $two_factor.totp == TRUE}
                                 {lang('enabled_mobile_app')}
                             {else}
-                                Enabled (PGP)
+                                {lang('enabled_pgp')}
                             {/if}
                         {else}
-                            Disabled
+                            {lang('disabled')}
                         {/if}
 
-                        {url type="anchor" url="account/two_factor" text="Configure" attr=""}
+                        {url type="anchor" url="account/two_factor" text=lang("configure") attr=""}
                     </div>
                 </div>
 
@@ -113,17 +113,17 @@
 
                 <div class="row">
                     <div class="col-md-4"><strong>{lang('force_pgp_messages')}</strong></div>
-                    <div class="col-md-8">{if $user.force_pgp_messages == '1'}Enabled{else}Disabled{/if}</div>
+                    <div class="col-md-8">{if $user.force_pgp_messages == '1'}{lang("enabled")}{else}{lang('disabled')}{/if}</div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-4"><strong>{lang('block_non_pgp_messages')}</strong></div>
-                    <div class="col-md-8">{if $user.block_non_pgp == '1'}Enabled{else}Disabled{/if}</div>
+                    <div class="col-md-8">{if $user.block_non_pgp == '1'}{lang('enabled')}{else}{lang('disabled')}{/if}</div>
                 </div>
                 {else}
                 <div class="row">
-                    <div class="col-md-4"><strong>PGP Features</strong></div>
-                    <div class="col-md-8">{url type="anchor" url="pgp/add" text="Add a PGP key" attr=""} {lang('to_enable_features_such_as')}</div>
+                    <div class="col-md-4"><strong>{lang('pgp_features')}</strong></div>
+                    <div class="col-md-8">{url type="anchor" url="pgp/add" text=lang("add_a_pgp_key") attr=""} {lang('to_enable_features_such_as')}</div>
                 </div>
                 {/if}
 

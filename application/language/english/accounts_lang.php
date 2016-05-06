@@ -53,3 +53,7 @@ $lang['ban_user'] = 'Ban User';
 $lang['unban_user'] = 'Unban User';
 $lang['banned'] = '(banned)';
 $lang['do_so_now'] = 'do so now!';
+$lang['add_a_pgp_key'] = 'Add a PGP key';
+$lang['configure'] = 'Configure';
+$lang['change_password'] = 'Change Password';
+$lang['edit'] = 'Edit';
