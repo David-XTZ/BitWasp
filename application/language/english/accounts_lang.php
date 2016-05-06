@@ -52,3 +52,4 @@ $lang['add_a_pgp_key_to'] = 'Add a PGP key to enable PGP two factor authenticati
 $lang['ban_user'] = 'Ban User';
 $lang['unban_user'] = 'Unban User';
 $lang['banned'] = '(banned)';
+$lang['do_so_now'] = 'do so now!';

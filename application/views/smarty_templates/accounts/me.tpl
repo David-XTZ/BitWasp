@@ -64,7 +64,7 @@
                 <div class="row">
                     <div class="col-md-4"><strong>{lang('bitcoin_public_keys')}</strong></div>
                     <div class="col-md-8">
-                        {if $bip32 == FALSE}Not set up - {url type="anchor" url="bip32" text="do so now!" attr=""}
+                        {if $bip32 == FALSE}{lang('not_set_up')} - {url type="anchor" url="bip32" text=lang("do_so_now") attr=""}
                         {else}Provider: {$bip32.provider} - {url type="anchor" url="bip32" text="Settings" attr=""}
                         {/if}
                     </div>

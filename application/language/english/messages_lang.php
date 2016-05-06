@@ -16,4 +16,6 @@ $lang['this_message_will_now_self'] = 'This message will now self-destruct..';
 $lang['send_message'] = 'Send Message';
 $lang['recipient'] = 'Recipient';
 $lang['message'] = 'Message';
+$lang['compose'] = 'Compose';
+$lang['delete_all'] = 'Delete All';
 $lang['delete_after_reading'] = 'Delete After Reading?';

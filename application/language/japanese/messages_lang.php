@@ -16,4 +16,6 @@ $lang['this_message_will_now_self'] = 'このメッセージは自動的に消�
 $lang['send_message'] = 'メッセージを送る';
 $lang['recipient'] = '受取人';
 $lang['message'] = 'メッセージ';
+$lang['compose'] = '作成';
+$lang['delete_all'] = 'すべて削除';
 $lang['delete_after_reading'] = '読んだ後に削除しますか?';

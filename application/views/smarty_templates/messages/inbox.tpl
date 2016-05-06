@@ -1,7 +1,7 @@
 
             <div class="col-md-9" id="inbox">
                 <div class="row">
-		            <h2>Inbox {if $count_unread_messages > 0}<small>{$count_unread_messages} new messages</small>{/if}</h2>
+		            <h2>{lang('inbox')} {if $count_unread_messages > 0}<small>{$count_unread_messages} new messages</small>{/if}</h2>
 
                     {assign var="defaultMessage" value=""}
                     {returnMessage defaultMessage="$defaultMessage" returnMessage="$returnMessage" class="$returnMessage_class"}
@@ -52,8 +52,8 @@
                             <label class="control-label col-sm-2 col-lg-2 col-md-2" for="submit"></label>
                             <div class="col-sm-5 col-lg-5 col-md-5">
                                 <p align="center">
-                                    {url type="anchor" url="message/send" text="Compose" attr='class="btn btn-primary"'}
-                                    <input type='submit' name='delete_all_messages' value='Delete All' class="btn btn-danger"/>
+                                    {url type="anchor" url="message/send" text=lang("compose") attr='class="btn btn-primary"'}
+                                    <button type='submit' name='delete_all_messages' value='Delete All' class="btn btn-danger">{lang('delete_all')}</button>
                                     <input type='hidden' name="delete_message" value="all" />
                                 </p>
                             </div>
