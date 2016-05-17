@@ -32,7 +32,7 @@
                             {if $current_user.user_hash != $item.vendor.user_hash}{url type="anchor" url=$smarty.capture.t_message_vendor_url text=lang("message") attr='class="btn btn-default"'}<br />{/if}
                             {if $current_user.user_role == 'Buyer'}
                                 <input type="hidden" name="item_hash" value="{$item.hash}" style="display:none" />
-                                <input type="submit" name="submit_purchase" value="{lang('purchase')}" class="btn btn-primary">
+                                <button type="submit" name="submit_purchase" value="Purchase" class="btn btn-primary">{lang('purchase')}</button>
                             {/if}
                         {/if}
                     </p>
